@@ -1,0 +1,802 @@
+/* --- ESTILOS GERAIS E LAYOUT DO SITE --- */
+html {
+    scroll-behavior: smooth;
+    /* Define um 'padding' no topo ao rolar para uma âncora. */
+    /* O valor deve ser um pouco maior que a altura da sua barra de navegação. */
+    scroll-padding-top: 70px; 
+}
+
+/* Regra 'body' combinada */
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.8;
+    margin: 0;
+    padding: 0;
+    background-color: #3e5c73; /* Cor de fundo suave */
+    color: #333;
+    transition: padding-left 0.3s ease; /* Transição para o menu lateral */
+}
+
+/* --- VARIÁVEIS DO MENU LATERAL --- */
+:root {
+    --sidebar-width-expanded: 260px; /* Largura do menu expandido */
+    --sidebar-width-collapsed: 80px;  /* Largura do menu retraído (só ícones) */
+    
+    /* Cores extraídas do seu CSS */
+    --sidebar-bg: #101b27;
+    --sidebar-link-text: #ecf0f1;
+    --sidebar-link-hover: #3498db;
+}
+
+/* --- LAYOUT PRINCIPAL (Sidebar + Conteúdo) --- */
+
+#sidebar {
+    position: fixed; /* Fica fixo na tela */
+    left: 0;
+    top: 0;
+    height: 100vh; /* Altura total da tela */
+    width: var(--sidebar-width-expanded); /* Começa expandido */
+    background: var(--sidebar-bg);
+    transition: width 0.3s ease;
+    overflow: hidden; /* Esconde o que transbordar (texto no modo retraído) */
+    z-index: 1000;
+    color: var(--sidebar-link-text);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Cabeçalho do menu (com o botão) */
+.sidebar-header {
+    padding: 20px 25px;
+    min-height: 80px; /* Altura para alinhar com seu header antigo (aprox) */
+    box-sizing: border-box; 
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ecf0f1; /* Linha sutil para separar */
+}
+
+#toggle-btn {
+    background: none;
+    border: none;
+    color: var(--sidebar-link-text);
+    font-size: 28px;
+    cursor: pointer;
+    padding: 0 5px;
+}
+
+/* Lista de links do menu */
+#sidebar ul {
+    list-style: none; /* Anula o list-style: square */
+    padding: 10px 0;
+    margin: 0;
+    width: 100%;
+    overflow-y: auto; /* Adiciona scroll se os itens não couberem */
+}
+
+#sidebar li a {
+    display: flex;
+    align-items: center;
+    padding: 15px 25px;
+    color: var(--sidebar-link-text);
+    text-decoration: none;
+    white-space: nowrap; /* Impede que o texto quebre linha */
+    transition: background-color 0.3s;
+    font-size: 1.1em;
+}
+
+#sidebar li a:hover {
+    background-color: var(--sidebar-link-hover);
+}
+
+.menu-icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 20px; /* Espaço entre ícone e texto */
+    flex-shrink: 0; /* Impede que o ícone encolha */
+    object-fit: cover; /* Garante que a imagem do Canva se ajuste bem */
+    border-radius: 4px; /* Opcional: arredonda os ícones */
+    filter: brightness(0) invert(1); /* Força o ícone a ficar branco */
+}
+
+.menu-text {
+    opacity: 1;
+    transition: opacity 0.2s ease, width 0.2s ease;
+    width: auto;
+    overflow: hidden;
+}
+
+/* Conteúdo principal (todo o resto da página) */
+#main-content {
+    padding-left: var(--sidebar-width-expanded); /* Espaço para o menu */
+    width: 100%;
+    transition: padding-left 0.3s ease;
+    box-sizing: border-box; /* Garante que o padding não aumente a largura total */
+}
+
+/* --- ESTADO RETRAÍDO (via JS) --- */
+
+body.sidebar-collapsed #main-content {
+    padding-left: var(--sidebar-width-collapsed);
+}
+
+body.sidebar-collapsed #sidebar {
+    width: var(--sidebar-width-collapsed);
+}
+
+body.sidebar-collapsed .menu-text {
+    opacity: 0; /* Esconde o texto */
+    width: 0;   /* Remove o espaço ocupado pelo texto */
+}
+
+body.sidebar-collapsed #sidebar li a {
+    justify-content: center; /* Centraliza o ícone */
+    padding-left: 0;
+    padding-right: 0;
+}
+
+body.sidebar-collapsed .menu-icon {
+    margin-right: 0; /* Remove a margem quando o texto some */
+}
+
+body.sidebar-collapsed .sidebar-header {
+    justify-content: center;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+
+/* --- ESTILOS DE CONTEÚDO (do CSS antigo) --- */
+
+.container {
+    width: 90%;
+    margin: auto;
+    overflow: hidden;
+    padding: 20px 0;
+}
+
+/* Regra 'header' combinada */
+header {
+    background:#101b27;
+    color: #ecf0f1;
+    padding: 2rem 0;
+    text-align: center;
+    border-bottom: 5px solid #ecf0f1; 
+    
+    /* Ajustes para funcionar dentro do #main-content */
+    width: 100%;
+    position: relative;
+    left: 0;
+    top: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.8em; /* Tamanho do título principal */
+    font-weight: 300;
+}
+
+/* As regras 'nav' antigas foram removidas (substituídas por #sidebar) */
+
+section {
+    background: #ffffff;
+    padding: 30px;
+    margin-bottom: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    font-size: 2.0em; /* Tamanho dos títulos de seção */
+    color: #1a3451;
+    border-bottom: 3px solid #04436d;
+    padding-bottom: 10px;
+    margin-top: 0;
+}
+
+h3 {
+    font-size: 1.7em; /* Tamanho dos subtítulos */
+    color: #04436d;
+}
+
+h4 {
+    font-size: 1.4em; /* Tamanho dos subtítulos menores */
+    color: #04446f;
+}
+h5 {
+    font-size: 1.2em; /* Tamanho dos subtítulos menores */
+    color: #04446f;
+}
+h6 {
+    font-size: 1.1em; /* Tamanho dos subtítulos menores */
+    color: #04446f;
+}
+p {
+    font-size: 1.0em; /* Tamanho do texto normal */
+    text-align: justify;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #34495e;
+    color: #ecf0f1;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Estilo genérico para listas (NÃO afeta o menu) */
+ul {
+    list-style-type: square;
+    padding-left: 20px;
+}
+
+/* Estilo para a seção de bibliografia para quebrar os links */
+#bibliografia li {
+    word-break: break-all;
+}
+
+/* --- ESTILOS FIGURAS (vlc, vlc_2, vlc_3, vlc_4) --- */
+
+.figura-vlc {
+    width: 95%; 
+    margin: 30px auto; 
+    padding: 15px;
+    border: 1px solid #ddd; 
+    background-color: #f9f9f9; 
+    border-radius: 8px; 
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05); 
+    text-align: center; 
+}
+
+.figura-vlc img {
+    max-width: 100%; 
+    height: auto; 
+    border-radius: 4px; 
+}
+
+.figura-vlc figcaption {
+    margin-top: 10px; 
+    line-height: 1.3; 
+}
+
+.figura-vlc .figura-desc {
+    display: block; 
+    font-size: 0.8em; 
+    font-style: normal; 
+    color: #444; 
+    margin-bottom: 5px; 
+}
+
+.figura-vlc .figura-fonte {
+    display: block; 
+    font-size: 0.65em; 
+    color: #555; 
+    font-style: italic; 
+}
+
+.figura-vlc .figura-fonte a {
+    color: #34495e; 
+    text-decoration: none;
+    font-size: inherit; 
+}
+
+.figura-vlc .figura-fonte a:hover {
+    text-decoration: underline;
+}
+
+.figura-vlc_2 {
+    width: 95%; 
+    margin: 30px auto; 
+    padding: 20px; 
+    border: 1px solid #ddd; 
+    background-color: #f9f9f9; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08); 
+    text-align: center; 
+}
+
+.figura-vlc_2 img {
+    width: 100%; 
+    height: auto; 
+    aspect-ratio: 2.5 / 1; 
+    object-fit: fill; 
+    border-radius: 4px; 
+}
+
+.figura-vlc_2 figcaption {
+    margin-top: 10px; 
+    line-height: 1.3; 
+}
+
+.figura-vlc_2 .figura-desc {
+    display: block; 
+    font-size: 0.8em; 
+    font-style: normal; 
+    color: #444; 
+    margin-bottom: 5px; 
+}
+
+.figura-vlc_2 .figura-fonte {
+    display: block; 
+    font-size: 0.65em; 
+    color: #555; 
+    font-style: italic; 
+}
+
+.figura-vlc_2 .figura-fonte a {
+    color: #34495e; 
+    text-decoration: none;
+    font-size: inherit; 
+}
+
+.figura-vlc_2 .figura-fonte a:hover {
+    text-decoration: underline;
+}
+
+.figura-vlc_3 {
+    width: 95%; 
+    margin: 30px auto; 
+    padding: 20px; 
+    border: 1px solid #ddd; 
+    background-color: #f9f9f9; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08); 
+    text-align: center; 
+}
+
+.figura-vlc_3 img {
+    width: 100%; 
+    height: auto; 
+    aspect-ratio: 2 / 1; 
+    object-fit: fill; 
+    border-radius: 4px; 
+}
+
+.figura-vlc_3 figcaption {
+    margin-top: 10px; 
+    line-height: 1.3; 
+}
+
+.figura-vlc_3 .figura-desc {
+    display: block; 
+    font-size: 0.8em; 
+    font-style: normal; 
+    color: #444; 
+    margin-bottom: 5px; 
+}
+
+.figura-vlc_3 .figura-fonte {
+    display: block; 
+    font-size: 0.65em; 
+    color: #555; 
+    font-style: italic; 
+}
+
+.figura-vlc_3 .figura-fonte a {
+    color: #34495e; 
+    text-decoration: none;
+    font-size: inherit; 
+}
+
+.figura-vlc_3 .figura-fonte a:hover {
+    text-decoration: underline;
+}
+
+.figura-vlc_4 {
+    width: 95%; 
+    margin: 30px auto; 
+    padding: 20px; 
+    border: 1px solid #ddd; 
+    background-color: #f9f9f9; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08); 
+    text-align: center; 
+}
+
+.figura-vlc_4 video {
+    width: 100%; 
+    height: auto; 
+    aspect-ratio: 2.5 / 1; 
+    object-fit: fill; 
+    border-radius: 4px; 
+}
+
+.figura-vlc_4 figcaption {
+    margin-top: 10px;
+    line-height: 1.3;
+}
+
+.figura-vlc_4 .figura-desc {
+    display: block;
+    font-size: 0.8em;
+    font-style: normal;
+    color: #444;
+    margin-bottom: 5px;
+}
+
+.figura-vlc_4 .figura-fonte {
+    display: block;
+    font-size: 0.65em;
+    color: #555;
+    font-style: italic;
+}
+
+.figura-vlc_4 .figura-fonte a {
+    color: #34495e;
+    text-decoration: none;
+    font-size: inherit;
+}
+
+.figura-vlc_4 .figura-fonte a:hover {
+    text-decoration: underline;
+}
+
+.figura-vlc_5 {
+    /* --- Alteração Principal --- */
+    max-width: 300px; /* Diminui o contêiner para 300px */
+    width: 90%;
+    /* ------------------------- */
+
+    margin: 30px auto; 
+    padding: 20px; 
+    border: 1px solid #ddd; 
+    background-color: #f9f9f9; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08); 
+    text-align: center; 
+}
+
+.figura-vlc_5 img {
+    /* --- Alterações Principais --- */
+    max-height: 250px;     /* FORÇA a altura máxima da imagem */
+    object-fit: contain; /* Garante que a imagem caiba sem distorcer */
+    /* ------------------------- */
+
+    width: 100%;       /* A imagem ocupa a largura do contêiner (300px) */
+    height: auto;      /* A altura será auto, mas limitada pelo max-height */
+    border-radius: 4px; 
+}
+
+/* Estilos de legenda (sem alteração) */
+.figura-vlc_5 figcaption {
+    margin-top: 10px;
+    line-height: 1.3;
+}
+
+.figura-vlc_5 .figura-desc {
+    display: block;
+    font-size: 0.8em;
+    font-style: normal;
+    color: #444;
+    margin-bottom: 5px;
+}
+
+.figura-vlc_5 .figura-fonte {
+    display: block;
+    font-size: 0.65em;
+    color: #555;
+    font-style: italic;
+}
+
+.figura-vlc_5 .figura-fonte a {
+    color: #34495e;
+    text-decoration: none;
+    font-size: inherit;
+}
+
+.figura-vlc_5 .figura-fonte a:hover {
+    text-decoration: underline;
+}
+
+/* --- ANIMAÇÕES E EXTRAS --- */
+
+@keyframes rainbow-flash {
+    0%, 100% { color: #E74C3C; } /* Vermelho */
+    16.6%   { color: #E67E22; } /* Laranja */
+    33.3%   { color: #F1C40F; } /* Amarelo */
+    50%     { color: #2ECC71; } /* Verde */
+    66.6%   { color: #3498DB; } /* Azul */
+    83.3%   { color: #9B59B6; } /* Violeta */
+}
+
+/* Aplica a animação ao nosso <span> */
+#vlc-title-animated {
+    /* Formato: nome-da-animação | duração | função-de-tempo | repetição */
+    animation: rainbow-flash 5s linear infinite;
+}
+
+/* Estilos de notas de rodapé (movidos para fora do @media) */
+sup a {
+    text-decoration: none; /* Remove o sublinhado */
+    color: inherit;       /* Faz o link usar a cor do texto ao redor */
+}
+
+/* Estiliza o link de volta na nota de rodapé */
+#nota1 a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/* --- ESTILOS PARA TELAS PEQUENAS (MOBILE) --- */
+
+@media (max-width: 768px) {
+    :root {
+         /* No mobile, o menu expandido toma a tela toda */
+        --sidebar-width-expanded: 220px;
+        /* E o retraído fica menor */
+        --sidebar-width-collapsed: 60px;
+    }
+    
+    /* Força o menu a começar retraído em telas pequenas */
+    body:not(.sidebar-collapsed) {
+         padding-left: var(--sidebar-width-collapsed);
+    }
+    
+    body:not(.sidebar-collapsed) #main-content {
+         padding-left: var(--sidebar-width-collapsed);
+    }
+     
+    body:not(.sidebar-collapsed) #sidebar {
+        width: var(--sidebar-width-collapsed);
+    }
+
+    body:not(.sidebar-collapsed) .menu-text {
+        opacity: 0; width: 0;
+    }
+    
+    body:not(.sidebar-collapsed) #sidebar li a {
+        justify-content: center; padding-left: 0; padding-right: 0;
+    }
+    
+    body:not(.sidebar-collapsed) .menu-icon {
+        margin-right: 0;
+    }
+    
+    body:not(.sidebar-collapsed) .sidebar-header {
+        justify-content: center; padding-left: 0; padding-right: 0;
+    }
+    
+    /* Estilos de quando está expandido no mobile (ativado pelo clique) */
+    body.sidebar-collapsed #main-content {
+         padding-left: var(--sidebar-width-expanded);
+    }
+    
+    body.sidebar-collapsed #sidebar {
+        width: var(--sidebar-width-expanded);
+    }
+    
+    body.sidebar-collapsed .menu-text {
+        opacity: 1; width: auto;
+    }
+    
+    body.sidebar-collapsed #sidebar li a {
+        justify-content: flex-start;
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+    
+    body.sidebar-collapsed .menu-icon {
+        margin-right: 20px;
+    }
+    
+    body.sidebar-collapsed .sidebar-header {
+        justify-content: flex-start;
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+/* --- Estilos para a Seção de Perguntas (FAQ) --- */
+
+.faq-item {
+    border-bottom: 1px solid #444; /* Linha separadora */
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+/* Estilo da pergunta */
+.faq-item h4 {
+    font-size: 1.2em;
+    color: #ecf0f1; /* Cor clara para a pergunta */
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+/* A palavra "Resposta" clicável */
+.faq-item summary {
+    font-size: 1em;
+    font-weight: bold;
+    color: #3498db; /* Azul interativo, como links */
+    cursor: pointer;
+    display: inline-block; /* Para não ocupar a largura toda */
+    padding: 5px 0;
+    
+    /* Remove o triângulo/marcador padrão */
+    list-style: none; 
+}
+
+.faq-item summary::-webkit-details-marker {
+    display: none; /* Remove marcador no Chrome/Safari */
+}
+
+/* Adiciona ícones + e - para indicar estado */
+.faq-item summary::before {
+    content: '+ ';
+    font-weight: bold;
+    margin-right: 5px;
+    font-family: monospace; /* Garante que + e - tenham boa aparência */
+}
+
+.faq-item details[open] summary::before {
+    content: '− '; /* Muda para "menos" quando aberto */
+}
+
+/* A caixa de resposta que aparece */
+.faq-answer {
+    background-color: #2c3e50; /* Fundo do bloco de resposta (cinza-azulado escuro) */
+    border-left: 3px solid #3498db; /* Destaque lateral azul */
+    padding: 15px;
+    margin-top: 10px;
+    border-radius: 4px;
+    color: #bdc3c7; /* Cor do texto da resposta */
+}
+
+.faq-answer p {
+    margin: 0;
+    line-height: 1.6;
+}
+/* =========================================
+   ESTILOS DO QUIZ VLC
+   ========================================= */
+/* Container das opções */
+.quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+    margin: 20px 0;
+}
+
+/* Botões das alternativas */
+.quiz-options button {
+    max-width: 800px;
+    width: 100%;
+    padding: 16px 20px;
+    font-size: 17px;
+    text-align: left;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    background-color: white;
+    cursor: pointer;
+    min-height: 55px;
+    box-sizing: border-box;
+}
+
+/* Para telas pequenas */
+@media (max-width: 768px) {
+    .quiz-options button {
+        padding: 12px 15px;
+        font-size: 15px;
+        min-height: 50px;
+    }
+}
+
+/* Para telas muito pequenas */
+@media (max-width: 480px) {
+    .quiz-options button {
+        padding: 10px 12px;
+        font-size: 14px;
+        min-height: 45px;
+    }
+}
+
+.quiz-options button:hover {
+    background-color: #f5f5f5;
+    border-color: #999;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Cores suaves para correto e incorreto */
+.quiz-options button[style*="background-color: rgb(76, 175, 80)"] {
+    background-color: #81C784 !important; /* Verde suave */
+    border-color: #66BB6A !important;
+}
+
+.quiz-options button[style*="background-color: rgb(244, 67, 54)"] {
+    background-color: #E57373 !important; /* Vermelho suave */
+    border-color: #EF5350 !important;
+}
+
+/* Explicação oculta por padrão */
+.quiz-explanation {
+    display: none;
+    margin-top: 25px;
+    padding: 20px;
+    background-color: #e3f2fd;
+    border-left: 4px solid #2196F3;
+    border-radius: 4px;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* Título da pergunta do quiz */
+.quiz-item {
+    margin-bottom: 40px;
+}
+
+.quiz-item h4 {
+    font-size: 19px;
+    margin-bottom: 15px;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Lista dentro da explicação */
+.quiz-explanation ul {
+    margin-top: 10px;
+}
+
+.quiz-explanation li {
+    margin-bottom: 8px;
+}
+
+/* 1. CONFIGURAÇÃO ESSENCIAL PARA ALINHAMENTO E CENTRALIZAÇÃO */
+div.container-lado-a-lado {
+    display: flex !important;           /* Garante que o layout Flexbox seja usado */
+    flex-direction: row !important;     /* Garante o layout LADO A LADO */
+    justify-content: center !important; /* Centraliza o bloco na página */
+    align-items: flex-start !important; 
+    flex-wrap: wrap !important;
+    
+    /* Centraliza o container e define o tamanho máximo */
+    max-width: 1000px !important;       /* Largura máxima do bloco (aumentado) */
+    width: 90% !important;              /* Ocupa 90% da largura da tela */
+    margin: 0 auto !important;          /* Centraliza o container horizontalmente */
+    gap: 30px !important;               /* Espaço entre as figuras */
+}
+
+/* 2. CONFIGURAÇÃO DE CADA FIGURA INDIVIDUALMENTE (para aumentar o tamanho) */
+div.container-lado-a-lado figure.figura-vlc_5 {
+    /* Força o tamanho: 45% da largura do container */
+    flex: 0 0 45% !important; /* Nao cresce (0), Nao encolhe (0), Ocupa 45% (45%) */
+    min-width: 350px !important; /* Garante que nao fique menor que 350px (se 45% for muito pequeno) */
+
+    /* Estilos de visual (mantidos e reforçados) */
+    box-sizing: border-box !important;
+    padding: 20px !important;
+    background-color: #ffffff !important;
+    border: 1px solid #ddd !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1) !important;
+    text-align: center !important;
+}
+
+/* 3. IMAGEM E LEGENDA */
+div.container-lado-a-lado img {
+    max-width: 100% !important;
+    height: auto !important;
+    display: block !important;
+    margin: 0 auto 15px auto !important; /* Centraliza a imagem e adiciona espaço */
+}
+
+figcaption {
+    text-align: center !important;
+}
+}

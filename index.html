@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comunicação por Luz Visível (VLC)</title>
+    
+    <link rel="stylesheet" href="styles.css">
+
+    </head>
+<body>
+
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <button id="toggle-btn">☰</button>
+        </div>
+        <ul>
+            <li><a href="#introducao">
+                <img src="imagens/play.svg" alt="Introdução" class="menu-icon">
+                <span class="menu-text">Introdução</span>
+            </a></li>
+            <li><a href="#estrutura-arquitetura">
+                <img src="imagens/arq.svg" alt="Arquitetura" class="menu-icon">
+                <span class="menu-text">Arquitetura</span>
+            </a></li>
+            <li><a href="#aplicacoes">
+                <img src="imagens/app.svg" alt="Aplicações" class="menu-icon">
+                <span class="menu-text">Aplicações</span>
+            </a></li>
+            <li><a href="#beneficios">
+                <img src="imagens/ben.svg" alt="Benefícios" class="menu-icon">
+                <span class="menu-text">Benefícios</span>
+            </a></li>
+            <li><a href="#limitacoes">
+                <img src="imagens/lim.svg" alt="Limitações" class="menu-icon">
+                <span class="menu-text">Limitações</span>
+            </a></li>
+            <li><a href="#conclusao">
+                <img src="imagens/conc.svg" alt="Conclusão" class="menu-icon">
+                <span class="menu-text">Conclusão</span>
+            </a></li>
+            <li><a href="#perguntas">
+                <img src="imagens/pergunta.svg" alt="Perguntas" class="menu-icon">
+                <span class="menu-text">Perguntas</span>
+            </a></li>
+            <li><a href="#bibliografia">
+                <img src="imagens/bib.svg" alt="Bibliografia" class="menu-icon">
+                <span class="menu-text">Bibliografia</span>
+            </a></li>
+        </ul>
+    </nav>
+
+    <div id="main-content">
+
+        <header>
+            <div class="container">
+                <h1>Comunicação por <span id="vlc-title-animated">Luz Visível</span> (VLC)</h1>
+                <p style="font-size: 1.4em; color: #bdc3c7; text-align: center;">Bernardo Brandão Pozzato Carvalho Costa, Maria Victoria França Silva Ramos e Pedro Araújo Lima</p>
+            </div>
+        </header>
+
+        <div class="container">
+            <section id="introducao">
+                <h2>1.0 Introdução à Comunicação por Luz Visível</h2>
+                <p>A descoberta e o domínio das ondas de rádio no final do século XIX e início do século XX inauguraram uma nova era, estabelecendo a comunicação por Radiofrequência (RF)
+                    como o paradigma dominante para a transmissão de informação sem fio. A eficiência, a capacidade de penetrar obstáculos e a ampla cobertura tornaram a RF a espinha dorsal
+                    das redes de comunicação globais, desde a radiodifusão até as modernas redes celulares e Wi-Fi. No entanto, o sucesso da comunicação por RF acarretou um grande desafio:
+                     a saturação do espectro eletromagnético de radiofrequência. O crescimento exponencial no número de dispositivos móveis, a proliferação da Internet das Coisas (IoT) e
+                     a demanda por aplicações de uso intensivo de dados, como streaming de vídeo em alta definição e realidade virtual, consumiram desenfreadamente as bandas de frequência disponíveis.
+                      A busca por novas faixas de frequência para acomodar o tráfego de dados crescente tornou-se um imperativo tecnológico e econômico, impulsionando a exploração de alternativas viáveis.</p>
+                <p>Neste cenário de necessidade, uma oportunidade tecnológica disruptiva emergiu de um domínio aparentemente não relacionado: a iluminação. A transição global da iluminação 
+                    incandescente e fluorescente para a tecnologia de iluminação de estado sólido, baseada em Diodos Emissores de Luz (LEDs), revolucionou não apenas a eficiência energética,
+                     mas também abriu uma nova fronteira para a comunicação. Diferentemente de suas predecessoras, os LEDs são dispositivos semicondutores capazes de serem ligados e desligados 
+                     a velocidades extremamente altas. Esta capacidade intrínseca de modulação de alta frequência permite que cada luminária LED desempenhe uma dupla função: fornecer iluminação 
+                     ambiente e, simultaneamente, transmitir dados de alta velocidade. Esta convergência entre iluminação e comunicação é o cerne da Comunicação por Luz Visível (Visible Light Communication - VLC).
+                      A ascensão da VLC, portanto, não é um desenvolvimento isolado, mas o resultado de uma confluência perfeita entre um problema crescente (a saturação do espectro de RF) e uma solução emergente 
+                      (a dualidade da infraestrutura de iluminação LED). A crise de RF criou a demanda por mais largura de banda, enquanto a revolução LED forneceu a infraestrutura de baixo custo para atender 
+                      a essa demanda, transformando uma curiosidade de laboratório em uma tecnologia com imenso potencial prático.</p>
+                <figure class="figura-vlc_4">
+                   <img src="imagens/intro1.jpg" alt="VLC">
+                   <figcaption>
+                       <span class="figura-desc">Exemplo de VLC</span>
+                       <span class="figura-fonte">
+                           Fonte: <a href="https://attract-eu.com/attract-featured-stories-vladimir/" target="_blank" rel="noopener noreferrer">ATTRACT featured stories: Visible light communication for indoor monitoring (VLADIMIR) </a>
+                       </span>
+                   </figcaption>
+               </figure> 
+                <figure class="figura-vlc">
+                   <img src="imagens/intro2.png" alt="VLC">
+                   <figcaption>
+                       <span class="figura-desc">Espectro eletromagnético</span>
+                       <span class="figura-fonte">
+                           Fonte: <a href="https://www.nist.gov/image/electromagnetic-spectrum" target="_blank" rel="noopener noreferrer">The electromagnetic spectrum </a>
+                       </span>
+                   </figcaption>
+               </figure>
+                    </section>
+            
+
+<section id="estrutura-arquitetura">
+                <h2>2.0 Estrutura, Arquitetura e Funcionamento do Sistema VLC</h2>
+                <p>A funcionalidade dos sistemas de Comunicação por Luz Visível é sustentada por uma arquitetura bem definida, que abrange desde os componentes físicos responsáveis pela emissão e recepção de luz até os protocolos que gerenciam a transmissão de dados. A compreensão desta estrutura é fundamental para avaliar o potencial e os desafios da tecnologia.</p>
+                
+                <h3>2.1 Componentes Fundamentais de um Sistema VLC</h3>
+                <p>A arquitetura de um sistema de Comunicação por Luz Visível (VLC) é composta por três componentes essenciais que gerenciam todo o fluxo da informação. O processo se inicia no transmissor, que na grande maioria dos trabalhos são os LEDs, responsáveis por modular a intensidade da luz para enviar os dados. Em seguida, essa luz viaja através do canal de comunicação, que é o meio por onde os feixes de luz se propagam, como o ar em um ambiente interno. Por fim, o receptor, geralmente um fotossensor, captura essa luz e a converte de volta em um fluxo de dados para que a informação original seja recuperada.</p>
+                
+                <h4>2.1.1 O Transmissor Óptico: LEDs e Diodos Laser (LDs)</h4>
+                <p>O transmissor é o componente que converte os sinais elétricos, que contêm a informação, em sinais ópticos modulados.</p>
+                <p><b>Diodos Emissores de Luz (LEDs):</b> São a escolha predominante para a maioria das aplicações VLC devido ao seu baixo custo, alta eficiência energética, longa vida útil e, crucialmente, sua dupla função como fonte de iluminação e comunicação. A luz branca, preferida para iluminação geral, é tipicamente gerada de duas maneiras: utilizando um LED azul revestido com uma camada de fósforo amarelo (phosphor-converted LED, ou pc-LED), ou combinando a luz de múltiplos LEDs de cores primárias, como vermelho, verde e azul (RGB-LEDs).</p>
+                <p><b>Micro-LEDs (µ-LEDs) e Diodos Laser (LDs):</b> Para aplicações que exigem taxas de dados ultra-altas (na ordem de Gbps), os LEDs convencionais enfrentam uma limitação fundamental em sua largura de banda de modulação. Para superar esse gargalo, fontes de luz mais avançadas como µ-LEDs e LDs são consideradas as tecnologias ideais, na medida em que possuem uma largura de banda muito maior, permitindo taxas de dados mais elevadas.</p>
+                <figure class="figura-vlc">
+                   <img src="imagens/mv_1.webp" alt="VLC">
+                   <figcaption>
+                       <span class="figura-desc"> Diferentes Tipos de LED</span>
+                       <span class="figura-fonte">
+                           Fonte: <a href="https://blog.delmic.com/microled-revolutionary-technology" target="_blank" rel="noopener noreferrer">MicroLED: The Next Revolution In Display Technology </a>
+                       </span>
+                   </figcaption>
+               </figure>
+                <h4>2.1.2 O Canal de Comunicação</h4>
+                <p>O canal de comunicação é a secção do meio físico na qual o sinal de luz se propaga do transmissor ao receptor. Em aplicações VLC, este meio é tipicamente o ar, seja num ambiente interno ou externo, uma configuração conhecida como Óptica em Espaço Livre (Free Space Optics - FSO). Esta tecnologia, FSO, refere-se de forma geral a qualquer comunicação que utiliza a luz para transmitir dados através da atmosfera ou do espaço, em vez de um guia confinado como a fibra óptica. A comunicação VLC é caracterizada pela presença de um caminho de Linha de Visada (Line-of-Sight - LOS), que é o caminho direto e desobstruído entre a fonte de luz e o detector. A qualidade do canal é, portanto, fortemente impactada por bloqueios físicos ou pela movimentação dos dispositivos VLC, que podem interromper esse caminho LOS. Além disso, a interferência de outras fontes de luz também afeta diretamente o desempenho do canal.</p>
+                <p><b>Observação:</b> Técnica de comunicação:</p>
+                <p><b>Multiple-Input-Multiple-Output (MIMO):</b> é uma técnica de comunicação utilizada em VLC para aumentar as taxas de dados e melhorar a confiabilidade e robustez do sistema. Isso é possível no VLC porque muitas lâmpadas são compostas por múltiplos LEDs, e cada LED pode ser considerado um transmissor (múltiplas entradas). A técnica utiliza vários LEDs e fotodetectores (múltiplas saídas) para estabelecer numerosos canais de comunicação ativos. O MIMO VLC é um sistema adaptativo definido por software que ajusta dinamicamente seus parâmetros de transmissão com base nas condições do canal.</p>
+                
+                <h4>2.1.3 O Receptor Óptico: Fotodetectores e Sensores de Imagem</h4>
+                <p>O receptor tem a função de captar o sinal óptico modulado e convertê-lo de volta em um sinal elétrico para que os dados possam ser decodificados.</p>
+                <p><b>Fotodiodos (PD):</b> São a escolha padrão para capturar sinais VLC, sendo normalmente utilizados em configurações de receptores fixos e estacionários. O receptor com fotodiodo geralmente possui um concentrador óptico para amplificar o sinal de luz fraco e um filtro óptico para eliminar ruídos de fontes como a luz solar. A função do fotodiodo é detectar o sinal luminoso e convertê-lo em uma fotocorrente.</p>
+                <p><b>Sensores de Imagem (IS):</b> São preferidos para cenários móveis com campos de visão (FOV) mais amplos, sendo implementados em smartphones para aplicações como posicionamento interno. Sua função é detectar e converter sinais de luz em dados eletrônicos. Os sensores do tipo CMOS são os mais comuns em celulares por vantagens como menor consumo de energia e tamanho reduzido. No entanto, são considerados lentos e consomem muita energia, exigindo um compromisso entre custo, velocidade e complexidade na sua escolha.</p>
+                
+                <h3>2.2 A Comunicação de Luz Visível: Arquitetura em Camadas</h3>
+                <p>A arquitetura de sistemas de Comunicação por Luz Visível (VLC) é geralmente descrita usando uma pilha de protocolos em camadas. Este modelo de camadas é uma abstração essencial que nos permite simplificar a complexidade do sistema. Em vez de tratar a comunicação como um único processo, nós o dividimos em níveis distintos, onde cada camada resolve um conjunto específico de problemas. Para entender o fluxo da comunicação, seguimos essa abstração. O processo se inicia quando os dados (bits) precisam ser enviados. Eles são processados na Camada Física (PHY) do transmissor, que é responsável por tarefas como a codificação e a modulação. A modulação é o processo que define como os dados são convertidos em um sinal que controlará o acionamento do LED. Do outro lado, o receptor (como um fotodiodo) captura a luz emitida. O sinal elétrico gerado é então amplificado e passa pela demodulação — um processo que também pertence à Camada Física (PHY) — para recuperar os bits originais. No entanto, em um ambiente com múltiplos dispositivos, apenas a camada física não é suficiente. Precisamos gerenciar quem pode usar o canal de luz e quando. Essa é a função da Camada MAC (Media Access Control). Ela utiliza protocolos, como o CSMA, para controlar o acesso ao meio, gerenciar a associação de dispositivos e evitar colisões. Os tópicos a seguir aprofundarão exatamente essas duas camadas, detalhando os mecanismos da Camada Física e os protocolos da Camada MAC que, juntas, tornam a comunicação VLC funcional.</p>
+                <figure class="figura-vlc">
+                   <img src="imagens/Estrutura_do_sistema.png" alt="O que é Comunicação por Luz Visível (VLC)">
+                   <figcaption>
+                       <span class="figura-desc">Componentes fundamentais de um sistema VLC</span>
+                       <span class="figura-fonte">
+                           Fonte: <a href="https://www.utmel.com/blog/categories/optoelectronics/what-is-visible-light-communication-vlc" target="_blank" rel="noopener noreferrer">What is Visible Light Communication(VLC)? </a>
+                       </span>
+                   </figcaption>
+               </figure>
+                <figure class="figura-vlc">
+                   <img src="imagens/MV_3.png" alt="VLC">
+                   <figcaption>
+                       <span class="figura-desc">Organização em Camadas da Comunicação de Luz Visível</span>
+                       <span class="figura-fonte">
+                           Fonte: <a href="https://www.mdpi.com/2304-6732/11/4/293" target="_blank" rel="noopener noreferrer">Mobile Application for Visible Light Communication Systems: An Approach for Indoor Positioning</a>
+                       </span>
+                   </figcaption>
+               </figure>
+                <h4>2.2.1 A Camada Física (PHY)</h4>
+                <p>A camada física é responsável por transmitir os dados (bits) através de um canal de comunicação, que, no caso do VLC, é a seção do meio físico onde a luz - responsável por carregar os dados - se propaga. Ela define as especificações dos dispositivos, como LEDs e fotodiodos, e a relação que eles têm com o meio de transmissão. Suas funções principais são gerenciar a transmissão e recepção dos sinais de luz, o que envolve aspectos como a representação desses sinais, a forma como serão enviados e a sincronização. O processo de transmissão funciona da seguinte maneira: um fluxo de bits de entrada passa por uma série de etapas, incluindo codificação e modulação. A modulação converte aspectos da luz (como sua intensidade) em sinais digitais para representar os bits. Em seguida, o sinal é enviado à fonte de luz (como um LED), que emite fótons através do canal óptico. O receptor é responsável por capturar a luz modulada e convertê-la de volta em uma corrente elétrica que representa os dados originais.</p>
+                <p>Esse processo também é gerenciado pela camada física e envolve uma sequência de componentes e etapas:</p>
+                <ul style="list-style-type: disc;">
+                    <li><b>Filtragem Óptica:</b> A luz do ambiente, que pode conter a luz modulada do transmissor e interferência de fundo (como a luz solar), passa primeiro por um filtro óptico. Filtros ópticos são usados para reduzir a interferência e remover ruídos de fontes de luz natural.</li>
+                    <li><b>Fotodetecção:</b> A luz filtrada incide sobre um fotodetector. Os fotossensores são responsáveis por capturar a luz (um processo chamado Detecção Direta) e convertê-la em um fluxo de dados ou corrente elétrica.</li>
+                    <li><b>Filtragem Elétrica e Amplificação:</b> O sinal elétrico bruto gerado pelo fotodetector é então processado. Ele passa por um filtro elétrico passa-faixa (Electrical Bandpass filter) e, em seguida, por um amplificador front-end (Front-end Amplifier). O uso de amplificadores é crucial para tornar o sinal menos propenso a interferências e ruídos.</li>
+                    <li><b>Demodulação:</b> O sinal elétrico amplificado e filtrado é enviado a um demodulador. Esta etapa é o processo inverso da modulação, onde o receptor recupera a informação original (os bits "0" e "1") do sinal.</li>
+                    <li><b>Saída dos Dados:</b> Os dados recuperados são finalmente enviados para exibição ou uso pelo dispositivo receptor.</li>
+                </ul>
+                <p>No entanto, o projeto da camada física do VLC precisa considerar vários desafios específicos. A modulação da luz deve buscar uma alta taxa de dados, mas sem interferir na percepção humana. Isso impõe duas restrições principais: a comunicação deve ser possível mesmo com o controle de brilho (dimming) da lâmpada, e a técnica não pode causar nenhuma oscilação de luz perceptível ao olho humano (flickering).</p>
+                <p>Outros fatores que influenciam a implementação incluem:</p>
+                <ul style="list-style-type: disc;">
+                    <li><b>Ruído:</b> A interferência de outras fontes de luz, especialmente a luz solar em ambientes externos, pode degradar significativamente o desempenho ou causar falhas. Filtros podem ser usados para evitar a saturação dos sensores.</li>
+                    <li><b>Multifuncionalidade:</b> Como os LEDs têm a dupla função de iluminação e comunicação, é preciso equilibrar os requisitos de brilho para a visão humana (parâmetros fotométricos) com a energia necessária para a comunicação (parâmetros radiométricos).</li>
+                    <li><b>Propagação:</b> Em ambientes internos, é importante compreender o impacto da luz refletida por múltiplas superfícies no desempenho do sistema.</li>
+                </ul>
+                <figure class="figura-vlc">
+                   <img src="imagens/MV_4.png" alt="VLC">
+                   <figcaption>
+                       <span class="figura-desc">Arquitetura da Comunicação por Luz Visível</span>
+                       <span class="figura-fonte">
+                           Fonte: <a href="https://www.researchgate.net/publication/332659149_Visible_Light_Communication_Concepts_Applications_and_Challenges" target="_blank" rel="noopener noreferrer">Visible Light Communication: Concepts, Applications and Challenges</a>
+                       </span>
+                   </figcaption>
+               </figure>
+               <figure class="figura-vlc">
+                   <img src="imagens/MV_5.png" alt="VLC">
+                   <figcaption>
+                       <span class="figura-desc">Processamento da Comunicação por Luz Visível</span>
+                       <span class="figura-fonte">
+                           Fonte: <a href="https://www.mdpi.com/2304-6732/11/4/293" target="_blank" rel="noopener noreferrer">Mobile Application for Visible Light Communication Systems: An Approach for Indoor Positioning</a>
+                       </span>
+                   </figcaption>
+               </figure>
+                <h5>2.2.1.1 Modulação e Codificação</h5>
+                <p>A modulação é o processo técnico responsável por variar uma propriedade do sinal luminoso — normalmente sua intensidade — com o objetivo de codificar e transmitir informações digitais. De forma geral, a modulação é o elemento central em qualquer sistema de comunicação, pois permite que dados sejam incorporados a um sinal físico, transportados através de um meio e posteriormente recuperados no receptor. No contexto de comunicação por luz visível (VLC), a escolha do esquema de modulação representa uma decisão de projeto crítica, pois influencia diretamente a taxa de transmissão de dados, a robustez do sistema, a eficiência energética e, principalmente, a capacidade de manter a função primária de iluminação sem causar desconforto visual. A evolução dos esquemas de modulação em VLC reflete a busca contínua por um equilíbrio entre desempenho de comunicação e conforto visual humano. Diferentemente dos sistemas de rádio frequência (RF), onde o foco é maximizar a eficiência espectral, em VLC há o desafio duplo de transmitir dados e preservar a qualidade da iluminação. Técnicas simples, como a OOK (On-Off Keying) pura, são inadequadas para esse fim, pois longas sequências de bits '0' poderiam gerar períodos de escuridão perceptíveis. Por isso, esquemas de modulação mais avançados e códigos de linha específicos foram desenvolvidos para manter níveis médios de brilho constantes e evitar cintilação, tornando a modulação em VLC um problema de engenharia de dupla finalidade, que deve conciliar comunicação eficiente e iluminação estável.</p>
+                <p><b>Principais Técnicas de Modulação VLC:</b></p>
+                <ul style="list-style-type: disc;">
+                    <li><b>On-Off Keying (OOK):</b> É o esquema de modulação mais simples e intuitivo. Um bit '1' é representado pela luz acesa (ON) e um bit '0' pela luz apagada (OFF). Embora simples de implementar, o OOK puro apresenta problemas de cintilação (flickering) perceptíveis em longas sequências de '0's ou '1's e possui taxas de dados baixas. Para mitigar isso, é empregada codificação como a Manchester, que representa '0' como '01' e '1' como '10', garantindo que não haja mais de dois símbolos iguais consecutivos.</li>
+                    <figure class="figura-vlc">
+                        <img src="imagens/MV_6.png" alt="VLC">
+                        <figcaption>
+                            <span class="figura-desc">Codificação de Manchester</span>
+                            <span class="figura-fonte">
+                                Fonte: <a href="https://www.mdpi.com/2304-6732/11/4/293" target="_blank" rel="noopener noreferrer">Mobile Application for Visible Light Communication Systems: An Approach for Indoor Positioning</a>
+                            </span>
+                        </figcaption>
+                    </figure>
+                    <li><b>Pulse Width Modulation (PWM):</b> Neste método, a largura dos pulsos de luz varia para transmitir dados (o tamanho da largura determina o valor do sinal transmitido) e, principalmente, para controlar os níveis de brilho (dimming) da lâmpada, permitindo um ajuste de 0% a 100%. Sozinho, apresenta taxas de dados limitadas (um estudo citado alcançou 4.8 Kbps), mas pode ser combinado com outras técnicas para melhorar o desempenho.</li>
+                    <li><b>Pulse Position Modulation (PPM):</b> A informação é codificada com base na posição de um pulso de luz dentro de um intervalo de tempo definido. É fácil de implementar, mas sua taxa de dados é baixa, pois apenas um pulso é transmitido por intervalo. Uma variação chamada Multi-Pulse PPM (MPPM) foi introduzida para melhorar a eficiência espectral, permitindo a transmissão de múltiplos pulsos por intervalo.</li>
+                    <li><b>Variable Pulse Position Modulation (VPPM):</b> É uma técnica híbrida que combina PPM para a comunicação de dados (a posição do pulso determina o valor) e PWM para o controle de brilho (a largura do pulso determina a intensidade da luz). (Apresentada no IEEE 802.15.7)</li>
+                    <li><b>Color Shift Keying (CSK):</b> Proposto pelo padrão IEEE 802.15.7 para aumentar as taxas de dados, este método modula a informação alterando a intensidade das três cores primárias (vermelho, verde e azul) de um LED RGB. A combinação das intensidades, com base no diagrama de cromaticidade CIE (Commission Internationale de l'Eclairage) 1931, cria diferentes cores que correspondem a diferentes símbolos de dados.</li>
+                    <li><b>Orthogonal Frequency Division Multiplexing (OFDM):</b> Nessa técnica, o canal de comunicação é dividido em múltiplos sub-portadores (sub-carriers) ortogonais. Os dados são enviados em fluxos modulados em cada um desses sub-portadores. Uma de suas principais vantagens é a redução da interferência entre símbolos.</li>
+                </ul>
+                
+                <h4>Tabela 1: Comparativo de Esquemas de Modulação em VLC</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Método de Modulação</th>
+                            <th>Como Funciona (Princípio de Operação)</th>
+                            <th>Vantagens e Características</th>
+                            <th>Desvantagens e Limitações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>On-Off Keying (OOK)</td>
+                            <td>Representa bits '1' com a luz acesa (ON) e bits '0' com a luz apagada (OFF).</td>
+                            <td>O mais simples e intuitivo de implementar.</td>
+                            <td>Causa cintilação (flickering); Baixas taxas de dados. (Pode ser mitigado com codificação Manchester).</td>
+                        </tr>
+                        <tr>
+                            <td>Pulse Width Modulation (PWM)</td>
+                            <td>A largura (duração) do pulso de luz varia para determinar o valor do sinal.</td>
+                            <td>Principalmente usado para controle de brilho (dimming) de 0% a 100%.</td>
+                            <td>Taxas de dados muito limitadas quando usado sozinho (ex: 4.8 Kbps).</td>
+                        </tr>
+                        <tr>
+                            <td>Pulse Position Modulation (PPM)</td>
+                            <td>A informação é codificada pela posição de um pulso de luz dentro de um intervalo de tempo.</td>
+                            <td>Fácil de implementar. (Variação MPPM melhora a eficiência).</td>
+                            <td>Baixa taxa de dados (apenas um pulso por símbolo).</td>
+                        </tr>
+                        <tr>
+                            <td>Variable Pulse Position Modulation (VPPM)</td>
+                            <td>Híbrido: Usa a posição do pulso (PPM) para dados e a largura do pulso (PWM) para brilho.</td>
+                            <td>Combina comunicação de dados com controle de brilho (dimming). (Parte do padrão IEEE 802.15.7).</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Color Shift Keying (CSK)</td>
+                            <td>Modula a informação alterando a intensidade das cores (Vermelho, Verde, Azul) em um LED RGB.</td>
+                            <td>Proposto pelo IEEE 802.15.7 para aumentar as taxas de dados.</td>
+                            <td>Requer LEDs RGB.</td>
+                        </tr>
+                        <tr>
+                            <td>Orthogonal Frequency Division Multiplexing (OFDM)</td>
+                            <td>Divide o canal em múltiplos sub-portadores ortogonais, enviando dados em fluxos paralelos.</td>
+                            <td>Reduz a interferência entre símbolos.</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h4>2.2.2 A Camada MAC</h4>
+                <p>A camada MAC (Medium Access Control), localizada acima da camada física (PHY), é responsável por gerenciar o acesso de múltiplos dispositivos ao canal óptico de maneira ordenada e eficiente, evitando colisões de dados e garantindo o uso equilibrado dos recursos do sistema. Em sistemas de Comunicação por Luz Visível (VLC), essa camada desempenha um papel essencial ao coordenar como cada dispositivo transmite e recebe informações dentro da mesma rede óptica. Além do controle de acesso ao meio, a camada MAC incorpora funcionalidades específicas da tecnologia VLC, que vão além da simples organização do tráfego de dados. Entre essas funções estão o suporte à mobilidade, que permite o funcionamento adequado mesmo com o movimento dos dispositivos; o controle de intensidade luminosa (dimming support), essencial para ajustar o brilho sem comprometer a transmissão de dados; e mecanismos de segurança, visibilidade e mitigação da cintilação (flickering), garantindo tanto a integridade das informações quanto o conforto visual.</p>
+                <p>Por fim, a MAC é responsável por estabelecer e manter uma ligação confiável entre as entidades de comunicação, assegurando transmissão de dados estável e eficiente mesmo em ambientes com diversos dispositivos VLC ativos. A camada MAC suporta três topologias de rede:</p>
+                <ul style="list-style-type: disc;">
+                    <li><b>Peer-to-Peer:</b> Um dispositivo pode se comunicar diretamente com qualquer outro dentro de sua área de cobertura. Um dos dispositivos deve assumir a função de coordenador.</li>
+                    <li><b>Estrela (Star):</b> Há um controlador central, chamado coordenador. A comunicação é estabelecida apenas entre o coordenador e cada dispositivo da rede.</li>
+                    <li><b>Broadcast:</b> Um dispositivo envia informações para todos os outros de forma unidirecional, sem que uma rede precise ser formalmente estabelecida.</li>
+                </ul>
+                    <figure class="figura-vlc">
+                        <img src="imagens/MV_7.png" alt="VLC">
+                        <figcaption>
+                            <span class="figura-desc">Topologias de rede</span>
+                            <span class="figura-fonte">
+                                Fonte: <a href="https://www.mdpi.com/2304-6732/11/4/293" target="_blank" rel="noopener noreferrer">Mobile Application for Visible Light Communication Systems: An Approach for Indoor Positioning</a>
+                            </span>
+                        </figcaption>
+                    </figure>
+                <h5>2.2.2.1 Protocolos de Acesso Múltiplo (MA) utilizados na camada MAC</h5>
+                
+                <h6><b><u>Time Division Multiple Access (TDMA)</b></u></h6>
+                <p>O Time Division Multiple Access (TDMA), ou Acesso Múltiplo por Divisão de Tempo, é um mecanismo tradicional que divide o sinal de comunicação em múltiplos intervalos de tempo, conhecidos como time slots. Esses slots são então alocados aos diferentes usuários. Dessa forma, todos os usuários compartilham o mesmo canal de frequência, mas transmitem em momentos distintos. Isso garante que cada usuário tenha o uso exclusivo do canal durante o seu slot de tempo designado, o que evita interferências diretas. O TDMA é uma técnica conhecida por ter sido utilizada em redes celulares (como 2G e 3G) e também é adotada em sistemas VLC para permitir que múltiplos dispositivos acessem o canal de comunicação.</p>
+                    <figure class="figura-vlc">
+                        <img src="imagens/tdma.png" alt="VLC">
+                        <figcaption>
+                            <span class="figura-desc">Funcionamneto do TDMA</span>
+                            <span class="figura-fonte">
+                                Fonte: <a href="https://www.cbtnuggets.com/blog/technology/networking/what-is-code-division-multiple-access-cdma" target="_blank" rel="noopener noreferrer">What is CDMA (Code-Division Multiple Access)?</a>
+                            </span>
+                        </figcaption>
+                    </figure>
+                <h6><b><u>Space Division Multiple Access (SDMA)</b></u></h6>
+                <p>O Space Division Multiple Access (SDMA), ou Acesso Múltiplo por Divisão de Espaço, é uma técnica que adota características direcionais para o acesso ao canal. Neste protocolo, o transmissor gera e envia múltiplos sinais de acordo com a posição específica dos usuários ativos. Ele explora a direcionalidade natural dos LEDs como uma vantagem, utilizando-a para criar feixes de luz distintos que separam os usuários no espaço.</p>
+                    <figure class="figura-vlc">
+                        <img src="imagens/sdma.png" alt="VLC">
+                        <figcaption>
+                            <span class="figura-desc">Funcionamneto do SDMA</span>
+                            <span class="figura-fonte">
+                                Fonte: <a href="https://www.researchgate.net/figure/Space-Division-Multiple-Access_fig11_264974179" target="_blank" rel="noopener noreferrer">Space Division Multiple Access</a>
+                            </span>
+                        </figcaption>
+                    </figure>
+                <h6><b><u>Carrier Sense Multiple Access (CSMA)</b></u></h6>
+                <p>O padrão IEEE 802.15.7 propõe dois tipos de protocolos CSMA (Carrier Sense Multiple Access). O primeiro tipo opera sem sinais do coordenador, que são desabilitados. Neste modo, é utilizado um canal de acesso aleatório não alocado para o CSMA. O funcionamento é o seguinte: um dispositivo que deseja transmitir deve primeiro aguardar um tempo aleatório, conhecido como período de back-off, e então verificar se o canal está livre. Se o canal estiver ocupado, o dispositivo aguarda novamente um período aleatório antes de tentar o acesso outra vez.</p>
+                <p>Já o segundo tipo opera com sinais do coordenador habilitados. Neste caso, o coordenador divide o tempo em "intervalos de sinal". Cada quadro dentro de um intervalo de sinal contém informações que definem os Períodos de Acesso por Contenção (CAP), onde os dispositivos podem competir pelo meio, e os Períodos Livres de Contenção (CFP), nos quais o coordenador é responsável por garantir que as transmissões ocorram de forma ordenada e sem colisões. Para transmitir durante o CAP, um dispositivo deve primeiro localizar o início do próximo "slot de back-off" e aguardar um número aleatório de slots antes de executar o Clear Channel Assessment (CCA). Se o canal for considerado ocioso, o dispositivo inicia a transmissão. Caso contrário, ele deve aguardar mais slots de back-off antes de tentar o CCA novamente.</p>
+                
+                <h6><b><u>Frequency Division Multiple Access (FDMA)</u></b></h6>
+                <p>O Frequency Division Multiple Access (FDMA), ou Acesso Múltiplo por Divisão de Frequência Ortogonal, é um mecanismo de acesso múltiplo baseado na divisão da frequência em blocos. Neste esquema, múltiplos usuários recebem diferentes faixas de frequência, chamadas subcanais (subcarriers), para realizar a comunicação. Este protocolo de camada MAC é derivado do esquema de modulação OFDM (Orthogonal Frequency Division Multiplexing), que é usado na camada física. Os principais desafios na implementação do FDMA em sistemas VLC estão relacionados à sua eficiência energética e à complexidade de decodificação.</p>
+                    <figure class="figura-vlc">
+                        <img src="imagens/fdma.png" alt="VLC">
+                        <figcaption>
+                            <span class="figura-desc">Funcionamneto do FDMA</span>
+                            <span class="figura-fonte">
+                                Fonte: <a href="https://www.cbtnuggets.com/blog/technology/networking/what-is-code-division-multiple-access-cdma" target="_blank" rel="noopener noreferrer">What is CDMA (Code-Division Multiple Access)?</a>
+                            </span>
+                        </figcaption>
+                    </figure>
+                <h6><b><u>Code Division Multiple Access (CDMA / OCDMA)</b></u></h6>
+                <p>O Code Division Multiple Access (CDMA) aplicado ao VLC, também conhecido como Optical CDMA (OCDMA), permite que múltiplos usuários tenham acesso ao mesmo canal simultaneamente. Isso é alcançado através do uso de códigos ópticos ortogonais (OOC). Neste protocolo, cada dispositivo usa um código de sequência único para modular seus dados. A escolha por códigos longos beneficia a eficiência óptica, pois eles possuem melhores propriedades de correlação, o que minimiza a interferência entre múltiplos usuários e reduz a taxa de erros. Contudo, isso impõe um contraponto que reduz o desempenho geral: códigos mais longos "espalham" um único bit de dados por um período maior, diminuindo a taxa de transmissão líquida (throughput) de cada usuário.</p>
+                    <figure class="figura-vlc">
+                        <img src="imagens/cdma.png" alt="VLC">
+                        <figcaption>
+                            <span class="figura-desc">Funcionamneto do CDMA</span>
+                            <span class="figura-fonte">
+                                Fonte: <a href="https://electronicsdesk.com/code-division-multiple-access.html" target="_blank" rel="noopener noreferrer">Code Division Multiple Access (CDMA)</a>
+                            </span>
+                        </figcaption>
+                    </figure>
+                <h6><b><u>Non-Orthogonal Multiple Access (NOMA)</b></u></h6>
+                <p>O Non-Orthogonal Multiple Access (NOMA), ou Acesso Múltiplo Não Ortogonal, é um protocolo que utiliza a multiplexação no domínio da potência. Diferente de outras técnicas, no NOMA, todos os usuários podem usar toda a largura de banda simultaneamente. O sistema gerencia isso alocando diferentes níveis de potência (power levels) para cada usuário, com base nas condições de seus respectivos canais. Para que isso funcione, o NOMA depende de duas técnicas principais: no transmissor, é utilizado o Superposition Coding (SC) para sobrepor os sinais e, no receptor, cada dispositivo usa o Successive Interference Cancellation (SIC) para detectar e decodificar corretamente cada sinal. As vantagens de adotar o NOMA incluem uma melhor qualidade de serviço, a mitigação de interferência e a capacidade de suportar um maior número de alocações de usuários.</p>
+                    <figure class="figura-vlc">
+                        <img src="imagens/noma.png" alt="VLC">
+                        <figcaption>
+                            <span class="figura-desc">Funcionamneto do NOMA</span>
+                            <span class="figura-fonte">
+                                Fonte: <a href=" https://www.mdpi.com/1424-8220/17/11/2465" target="_blank" rel="noopener noreferrer">Power Allocation Scheme for Non-Orthogonal Multiple Access in Underwater Acoustic Communications</a>
+                            </span>
+                        </figcaption>
+                    </figure>
+            </section>
+            <section id="aplicacoes">
+                <h2>3.0 Aplicações e Casos de Uso da Tecnologia VLC</h2>
+                <p>A versatilidade da Comunicação por Luz Visível permite sua aplicação em uma vasta gama de cenários, 
+                desde acesso rápido à internet até a comunicação interplanetária, muitos dos quais exploram as fraquezas e 
+                limitações inerentes da comunicação por RF. A análise das aplicações da VLC revela um padrão claro: 
+                seus casos de uso mais robustos e promissores não são aqueles que buscam substituir diretamente a RF em seus pontos fortes, 
+                como a cobertura de área ampla, mas sim aqueles que capitalizam sobre as propriedades únicas da luz para resolver problemas 
+                onde a RF é inadequada ou proibida (restrita). A imunidade à interferência eletromagnética e de radiofrequência, a capacidade de operar em meios 
+                onde a RF não se propaga bem (como a água, cabines de aeronaves e usinas de energia nuclear), a segurança proporcionada pelo 
+                confinamento físico do sinal e a possibilidade de localização de alta precisão são características que definem os nichos de alto 
+                valor para a VLC. Portanto, a tecnologia deve ser vista não como uma concorrente, mas como uma parceira simbiótica da RF, 
+                estendendo a conectividade sem fio a domínios que antes eram hostis ou inacessíveis e, assim, compondo um ecossistema de comunicação híbrido e mais resiliente.</p>
+                <figure class="figura-vlc">
+                    <img src="imagens/TabRFxVLC.png" alt="Tabela comparando RF e VLC">
+                    
+                    <figcaption>
+                        <span class="figura-desc">
+                            Tabela comparativa de tecnologias de radiofrequência e VLC
+                        </span>
+                        
+                        <span class="figura-fonte">
+                            Fonte: <a href="https://www.researchgate.net/publication/332659149_Visible_Light_Communication_Concepts_Applications_and_Challenges" target="_blank" rel="noopener noreferrer">Visible Light Communication: Concepts, Applications and Challenges</a>
+                        </span>
+                    </figcaption>
+                </figure>
+                <h4>Tabela 3.0: Matriz de Aplicações VLC vs. Requisitos e Desafios</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Aplicação</th>
+                            <th>Requisito Primário</th>
+                            <th>Benefício Chave da VLC</th>
+                            <th>Principal Desafio Técnico</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Li-Fi (Indoor)</td>
+                            <td>Alta Taxa de Dados</td>
+                            <td>Espectro Vasto, Reutilização de Frequência</td>
+                            <td>Mobilidade (Handover), Bloqueio de LOS</td>
+                        </tr>
+                        <tr>
+                            <td>ITS - Intelligent Transport System (Veicular)</td>
+                            <td>Baixíssima Latência</td>
+                            <td>Conexão Direcional, Infraestrutura Existente</td>
+                            <td>Interferência da Luz Solar, Condições Climáticas</td>
+                        </tr>
+                        <tr>
+                            <td>IPS (Posicionamento)</td>
+                            <td>Alta Precisão</td>
+                            <td>Geometria de Luz Definida, Sem Interferência</td>
+                            <td>Cobertura Total, Calibração do Ambiente</td>
+                        </tr>
+                        <tr>
+                            <td>Hospitais / Indústria</td>
+                            <td>Imunidade a EMI (Interferência eletromagnética)</td>
+                            <td>Sem Emissão de RF, Segurança Intrínseca</td>
+                            <td>Robustez em Ambientes Hostis, Cobertura</td>
+                        </tr>
+                        <tr>
+                            <td>Comunicação Subaquática</td>
+                            <td>Propagação em Meio Denso</td>
+                            <td>Baixa Atenuação na Água (Luz Azul/Verde)</td>
+                            <td>Turbidez da Água, Alinhamento, Alcance</td>
+                        </tr>
+                        <tr>
+                            <td>IoT / Cidades Inteligentes</td>
+                            <td>Baixo Custo, Ampla Disponibilidade</td>
+                            <td>Reutilização da Infraestrutura de Iluminação</td>
+                            <td>Escalabilidade, Gestão de Rede, Uplink</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h3>3.1 Comunicação Interna de Alta Velocidade</h3>
+                <p>A infraestrutura de iluminação LED, já onipresente em ambientes residenciais e comerciais,
+                     pode ser adaptada para a transmissão de dados. Isso permite um uso duplo, atendendo simultaneamente 
+                     aos requisitos de iluminação e comunicação, desde que algumas regulações sejam cumpridas.
+                    A arquitetura dos sistemas de iluminação modernos, que utilizam múltiplos LEDs por bulbo, é intrinsecamente favorável à implementação da técnica 
+                    MIMO (Multiple-Input Multiple-Output), potencializando a taxa de transmissão interna e garantindo a alta velocidade.
+                </p>
+                <p>Adicionalmente, o sistema pode ser projetado para operar mesmo quando a iluminação está dimerizada ou aparentemente "desligada". 
+                    Isso é alcançado através do envio de dados em pulsos curtos e de alta frequência, imperceptíveis ao olho humano, mas perfeitamente detectáveis 
+                    pelos fotodiodos receptores, que recebem os dados mesmo que em taxas reduzidas.</p>
+                <p>A experiência do usuário com tecnologias de radiofrequência (RF), como o WiFi, é frequentemente prejudicada por um desempenho
+                     inconstante ou por velocidades que não atingem o prometido. A causa disso são as limitações inerentes à RF: ela é suscetível à interferência,
+                      ao congestionamento da rede e à perda de qualidade quando muitos dispositivos estão conectados. O Li-Fi soluciona essas dificuldades, pois oferece uma 
+                      comunicação sem fio de alta largura de banda que se mantém totalmente confiável e estável, justamente por ser imune a esses três problemas 
+                      (interferência, congestionamento e degradação por múltiplos usuários).</p>
+               <figure class="figura-vlc_4">
+                    <video autoplay loop muted playsinline>
+                    <source src="imagens/v1.mp4" type="video/mp4">
+                    </video>
+                    
+                    <figcaption>
+                        <span class="figura-desc">Comparação de roteamento Wi-Fi x Li-Fi</span>
+                        <span class="figura-fonte">Fonte: 
+                            <a href="https://www.purelifi.com/about-lifi/" target="_blank">pureLiFi - What is LiFi & How Does it Work?</a>
+                        </span>
+                    </figcaption>
+                </figure>
+                <h4>3.1.1 Light Fidelity (Li-Fi)</h4>
+                <p>Li-Fi, ou Light Fidelity, é talvez a aplicação mais conhecida da VLC, focada em fornecer acesso à internet de alta velocidade e 
+                    alta capacidade em ambientes internos. Ao transformar cada luminária LED em um ponto de acesso sem fio, o Li-Fi pode criar 
+                    redes de dados densas em locais como escritórios, residências, centros comerciais, aeroportos e salas de conferência. 
+                    Esta aplicação aborda diretamente o problema de congestionamento do espectro de Wi-Fi em áreas com alta densidade de usuários. 
+                    Como cada luminária cria uma pequena célula de comunicação (atto célula), a mesma frequência pode ser reutilizada em salas adjacentes sem interferência,
+                     aumentando drasticamente a capacidade espacial da rede.</p>
+                <p>
+                    Um exemplo prático dessa tecnologia é o sistema LiFi-XC, da empresa “pure-LiFI”, uma solução que fornece taxas de dados elevadas tanto para downlink 
+                    quanto para uplink. Este sistema, que atraiu centenas de investidores como uma solução comercial pioneira, é composto por Pontos de Acesso 
+                    (Access Points) e Estações (Stations). Ele cria uma infraestrutura completa de acesso à internet baseada em Li-Fi, suportando recursos essenciais 
+                    de comunicação sem fio, como mobilidade do usuário, acesso múltiplo e segurança, tendo limitações em cenários sem luz (não funciona abaixo de
+                     60 <i>lux</i><sup id="ref1"><a href="#nota1" title="Ver definição de lux">*</a></sup>). A tecnologia <i>“Light Antenna ONE"</i> é auxiliada por conexão 
+                     invisível (infravermelha), superando a dificuldade em cenários sem iluminação.
+                </p>
+                <p> Outro exemplo prático de comunicação óptica sem fio (WOC) é o Projeto Taara, uma iniciativa originada no laboratório X da Alphabet (Google) que utiliza terminais, chamados <i>"Lightbridge"</i>, que se assemelham a pequenos semáforos, para disparar feixes de luz invisíveis e estreitos pelo ar, criando links de dados de alta velocidade. A tecnologia funciona de forma semelhante à fibra óptica, mas sem a necessidade de cabos subterrâneos ou licenciamento de espectro. Ela foi projetada para superar "lacunas de conectividade", sendo ideal para áreas de topografia complexa, como o Rio de Janeiro, onde morros e construções densas tornam a instalação de fibra tradicional cara ou inviável. </p>
+                <style>
+                    /* 1. CONTAINER: Centralizar o bloco e definir o tamanho máximo */
+                    .container-lado-a-lado {
+                        display: flex; 
+                        
+                        /* Ajustes para Centralizar e Controlar o Tamanho do Bloco */
+                        justify-content: center; /* Centraliza as figuras horizontalmente */
+                        max-width: 900px;        /* Largura máxima do bloco (mantido) */
+                        margin: 0 auto;          /* Centraliza o container na página */
+                        
+                        gap: 30px;               /* Espaço entre as figuras (mantido) */
+                        flex-wrap: wrap; 
+                        
+                        /* NOVO: Faz com que as figuras tenham a mesma altura */
+                        align-items: stretch;    /* Estica as figuras para terem a mesma altura */
+                    }
+
+                    /* 2. FIGURAS: Definir o tamanho individualmente */
+                    .container-lado-a-lado .figura-vlc_5 {
+                        flex: 1 1 45%; 
+                        box-sizing: border-box; 
+                        min-width: 350px;       /* Garante um tamanho MÍNIMO maior (mantido) */
+                        
+                        /* Estilos de Card (mantidos) */
+                        padding: 20px;
+                        border: 1px solid #ddd;
+                        border-radius: 8px;
+                        background-color: #ffffff;
+                        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                        
+                        /* NOVO: Garante que o conteúdo interno preencha o espaço da figura */
+                        display: flex;
+                        flex-direction: column; /* Organiza o conteúdo da figura verticalmente */
+                        justify-content: space-between; /* Espalha o conteúdo para cima e para baixo */
+                    }
+
+                    /* 3. IMAGENS: Ajustar para preencher melhor o espaço */
+                    .container-lado-a-lado img {
+                        max-width: 100%;
+                        height: auto; /* Mantém a proporção */
+                        display: block;
+                        margin: 0 auto 10px auto; /* Centraliza a imagem e adiciona espaço abaixo */
+                        
+                        /* NOVO: Garante que a imagem se ajuste ao espaço sem cortar */
+                        object-fit: contain;     /* Redimensiona a imagem para caber, mantendo proporção */
+                        flex-grow: 1;            /* Permite que a imagem ocupe o espaço vertical disponível */
+                    }
+                    
+                    /* 4. LEGENDA: Ajustar para o novo layout */
+                    .figura-vlc_5 figcaption {
+                        padding: 5px 0;
+                        text-align: center;
+                        margin-top: auto; /* Empurra a legenda para a parte inferior da figura */
+                    }
+
+                    .figura-vlc_5 .figura-desc {
+                        font-weight: bold;
+                        display: block; /* Garante que 'figura-desc' seja um bloco */
+                    }
+                </style>
+
+                <div class="container-lado-a-lado">
+                    
+                    <figure class="figura-vlc_5">
+                        <img src="imagens/Taara.avif" alt="Terminais Lightbridge">
+                        
+                        <figcaption>
+                            <span class="figura-desc">Terminais "Lightbridge"</span>
+                            
+                            <span class="figura-fonte">
+                                Fonte: <a href="https://www.taaraconnect.com" target="_blank" rel="noopener noreferrer">Taara</a>
+                            </span>
+                        </figcaption>
+                    </figure>
+                    
+                    <figure class="figura-vlc_5">
+                        <img src="imagens/how-taara-works.gif" alt="Feixe de luz entre dois terminais Lightbridge da Taara">
+                        
+                        <figcaption>
+                            <span class="figura-desc">Feixe de luz entre dois terminais "Lightbridge"</span>
+                            <span class="figura-fonte">Fonte: 
+                                <a href="https://tecnoblog.net/noticias/rio-ganha-inedita-rede-de-dados-por-feixe-de-luz/" target="_blank">Rio ganha inédita rede de dados por feixe de luz</a>
+                            </span>
+                        </figcaption>
+                    </figure>
+
+                </div>
+                <p> O sistema Taara pode fornecer taxas de dados de até 20 Gb/s em distâncias de até 20 km, desde que haja linha de visada direta entre os terminais. No entanto, como a luz é transmitida pelo ar, a conexão pode sofrer interrupções por condições atmosféricas, como neblina, ou por obstáculos físicos, como pássaros. Para superar essas limitações e garantir uma conexão estável, o Taara utiliza uma taxa de dados adaptativa e uma arquitetura híbrida. Esta abordagem combina o link óptico de alta velocidade com um link de backup planejado de micro-ondas (radiofrequência), assegurando a resiliência da conexão mesmo quando o feixe de luz é temporariamente obstruído. </p>
+
+                <p>
+                    Por fim, o Li-Fi supera o Wi-Fi (Wireless Fidelity) em densidade de conexões ao permitir que mais células de acesso sejam instaladas por metro quadrado,
+                     usando a luz existente sem perda de velocidade. Isso é viável porque, diferentemente da radiofrequência, o FOV (Campo de Visão) do Li-Fi pode ser precisamente delimitado.
+                      Essa capacidade de criar mais células de comunicação em um local aumenta drasticamente a capacidade total da rede. O Li-Fi, com suas ondas nanométricas, 
+                      representa assim a próxima etapa na evolução da comunicação sem fio, que já passou pelas ondas centimétricas (4G) e milimétricas (5G). Além disso, 
+                      semelhante a outras tecnologias de comunicação sem fio, o LiFi pode ser usado em uma variedade de aplicações, como acesso à internet, comunicações 
+                      de celular para celular ou de celular para TV, ou em casos de uso emergentes, como realidade estendida ou mista.
+                </p>
+
+                <p id="nota1" style="font-size: smaller;">
+                    <a href="#ref1" title="Voltar à referência">*</a><i>lux</i> é uma medida da iluminância, quantidade de luz por metro quadrado. É medido pela fórmula Lux = Lúmens / m²
+                </p>                
+                <figure class="figura-vlc_2">
+                    <img src="imagens/Li-Fi.jpg" alt="Infográfico sobre Li-Fi">
+                    
+                    <figcaption>
+                        <span class="figura-desc">Exemplo de aplicação Li-Fi em um ambiente interno</span>
+                        
+                        <span class="figura-fonte">
+                            Fonte: <a href="https://canalbpv.com/li-fi-promete-ser-mais-rapido-que-wi-fi-e-5g-entenda-sobre-essa-tecnologia/" target="_blank" rel="noopener noreferrer">Li-Fi Promete ser Mais Rápido que Wi-Fi e 5G; Entenda sobre essa Tecnologia!</a>
+                        </span>
+                    </figcaption>
+                </figure>
+                <figure class="figura-vlc_3">
+                    <img src="imagens/Li-Fi_func.png" alt="Tecnologia Li-Fi com luz visível">
+                    <figcaption>
+                        <span class="figura-desc">Funcionamento da tecnologia Li-Fi</span>
+                        <span class="figura-fonte">
+                            Fonte: <a href="https://krify.co/li-fi-technology-beating-wi-fi-speed-with-visible-light/" target="_blank" rel="noopener noreferrer">Li-Fi Technology: Beating Wi-Fi Speed with visible light</a>
+                        </span>
+                    </figcaption>
+                </figure>
+                <h3>3.2 Sistemas de Transporte Inteligentes (ITS) com VLC veicular (V2LC)</h3>
+                <p>A Comunicação por Luz Visível (VLC) surge como uma tecnologia candidata extremamente promissora para a próxima geração de Sistemas de Transporte Inteligentes (ITS), 
+                    incluindo veículos autônomos e conectados. Sua principal vantagem competitiva reside no aproveitamento da infraestrutura de iluminação já amplamente instalada:
+                     faróis e lanternas de LED nos veículos, além de semáforos e iluminação pública de LED na infraestrutura viária.</p>
+                <p>Como os LEDs já são predominantes na indústria automotiva, o custo de implementação da VLC torna-se significativamente mais baixo e menos complexo em comparação 
+                    com as soluções baseadas em radiofrequência (RF). As vias públicas já dispõem de inúmeras fontes de luz que podem ser adaptadas para a comunicação por luz visível.</p>
+                <p>Embora os sistemas VLC dependam da linha de visada (LOS), essa característica facilita a implementação de uma rede de comunicação veicular. A solução consiste em integrar
+                     transmissores e receptores nos veículos e na infraestrutura rodoviária de LED existente, permitindo a formação de uma rede robusta e dinâmica, com alta taxa de transmissão.</p>
+                <p>O principal desafio, contudo, é a suscetibilidade a ruídos luminosos no ambiente externo. Fontes de alta intensidade, como a luz solar direta ou outdoors luminosos, 
+                    podem causar interferência. Esse problema pode ser mitigado com o uso de filtros ópticos e técnicas de processamento de imagem, como a "flag image" (imagem de marcação), 
+                    que filtra objetos de baixa intensidade e isola os sinais dos LEDs transmissores, mas ainda há interferência. Além disso, para maiores distâncias a taxa de transmissão é reduzida.</p>
+               <figure class="figura-vlc_3">
+                    <img src="imagens/carros.jpg" alt="VLC em Sistemas de Transporte Inteligentes">
+                    <figcaption>
+                        <span class="figura-desc">VLC em Sistemas de Transporte Inteligentes (ITS)</span>
+                        <span class="figura-fonte">
+                            Fonte: <a href="https://www.mdpi.com/2304-6732/12/3/225" target="_blank" rel="noopener noreferrer">Advancements and Challenges of Visible Light Communication in Intelligent Transportation Systems: A Comprehensive Review </a>
+                        </span>
+                    </figcaption>
+                </figure>
+                <h3>3.3  Comunicação Veicular - Veículo para Tudo (V2X) Veículo-a-Veículo (V2V) e Veículo-a-Infraestrutura (V2I)</h3>
+                <p>A Comunicação por Luz Visível (VLC) é uma tecnologia habilitadora fundamental para as Redes Ad-Hoc Veiculares (VANETs), que, dentro da comunicação V2X, se subdividem 
+                    principalmente nas modalidades V2V (Veículo-a-Veículo) e V2I (Veículo-a-Infraestrutura).</p>
+                <p>O ponto central da VLC em aplicações VANET é a latência ultrabaixa, que é fundamental em cenários de segurança ativa e condução autônoma, 
+                    onde o tempo de reação é crítico. A transmissão de um alerta de colisão iminente via VLC é processada muito mais rapidamente do que o tempo de reação humano.</p>
+                <figure class="figura-vlc_3">
+                    <img src="imagens/Veiculo1.jpg" alt="Metodologias de VLC Veicular">
+                    <figcaption>
+                        <span class="figura-desc">Comunicação veicular com VLC</span>
+                        <span class="figura-fonte">
+                            Fonte: <a href="https://www.mdpi.com/1424-8220/24/2/598" target="_blank" rel="noopener noreferrer">A Survey of Vehicular VLC Methodologies</a>
+                        </span>
+                    </figcaption>
+                </figure>
+                <h4>3.3.1 Comunicação Veículo-a-Veículo (V2V)</h4>
+                <p>
+                Na comunicação V2V, os veículos trocam informações diretamente entre si (comunicação de um salto, ou one-hop), utilizando os faróis e lanternas de 
+                LED como transmissores e câmeras de alta velocidade ou fotodiodos, muitas vezes integrados ao para-brisa ou aos conjuntos de iluminação, como receptores.
+                </p>
+
+                <p>
+                As principais contribuições são:
+                </p>
+
+                <ul style="list-style-type: disc;">
+                <li>
+                    <strong>Luz de Frenagem de Emergência (EBL)</strong> &rarr; O veículo da frente, ao acionar uma frenagem brusca, transmite esse dado instantaneamente via VLC. 
+                    Os veículos seguintes recebem esse alerta antes mesmo que o motorista possa perceber visualmente a luz de freio, permitindo uma reação automatizada ou assistida.
+                </li>
+                <li>
+                    <strong>Platooning (Comboio)</strong> &rarr; A VLC é ideal para comboios de veículos (caminhões ou carros autônomos). A baixíssima latência da VLC permite que
+                     os veículos no comboio mantenham uma distância mínima e segura entre os veículos, reagindo de forma síncrona às ações de aceleração e frenagem do veículo líder.
+                      A natureza direcional (LOS) da luz também previne interferência com comboios em pistas adjacentes.
+                </li>
+                <li>
+                    <strong>See-Through System (STS)</strong> &rarr; Em situações de ultrapassagem, um veículo maior (como um caminhão) pode transmitir o fluxo de vídeo de sua câmera frontal
+                     para o veículo de trás, permitindo que o motorista "veja através" dele e tome decisões de ultrapassagem mais seguras devido ao aumento da visibilidade.
+                </li>
+                </ul>
+                <h3>3.4 Sistemas de Posicionamento Interno (IPS) de Alta Precisão</h3>
+                <p>Em grandes espaços internos como aeroportos, museus, hospitais, centros comerciais e armazéns, onde os sinais de GPS são fracos ou inexistentes, a VLC oferece uma solução
+                     para a navegação e localização. O princípio de funcionamento é simples: cada luminária LED no teto transmite um identificador único ou suas coordenadas geográficas.
+                      Um dispositivo receptor, como um smartphone utilizando sua câmera ou um fotodetector dedicado, pode detectar os sinais de múltiplas luminárias em seu campo de visão.
+                      Ao triangular os sinais recebidos, o dispositivo pode calcular sua posição com uma precisão na ordem de centímetros, uma melhoria significativa em relação a outras 
+                      tecnologias de posicionamento interno baseadas em RF, como Wi-Fi ou Bluetooth.</p>
+                <p>Diversos algoritmos são empregados para calcular a posição. Uma técnica conhecida é o "Epsilon system", que reporta um erro de 0,4m. Este sistema utiliza um algoritmo
+                    de localização, chamado trilateração, que se baseia no Ângulo de Chegada (AOA - Angle of Arrival) dos sinais de múltiplos transmissores para determinar a posição do receptor 
+                    (fotodiodo), beneficiando-se da linha de visada (LOS) da VLC.</p>
+                <p>Outro método é o "Luxapose", que utiliza sensores de imagem, como a câmera de um smartphone, como receptores. A partir da orientação da câmera e dos dados de AOA,
+                     é possível obter a localização com auxílio de um servidor em nuvem, alcançando um erro de apenas 0,1m. Existem também técnicas híbridas que, para localizar,
+                      misturam o Ângulo de Chegada (AOA) com a Força do Sinal Recebido (RSS - Received Signal Strength).</p>
+                <p>O posicionamento baseado em VLC, apesar de enfrentar desafios de robustez, complexidade e escalabilidade, traz grandes melhorias na precisão e acurácia. 
+                    Com isso, a tecnologia já apresenta uma aplicação comercial no mercado, como a da "Bytelight", uma fornecedora de IPS baseados em iluminação LED.</p>
+                <figure class="figura-vlc_3">
+                    <img src="imagens/IPS.png" alt="Sistema de localização interna com VLC">
+                    <figcaption>
+                        <span class="figura-desc">Sistema de localização interna (IPS) com VLC</span>
+                        <span class="figura-fonte">
+                            Fonte: <a href="https://www.researchgate.net/figure/LC-indoor-localization-system_fig1_332959345" target="_blank" rel="noopener noreferrer">VLC indoor localization system</a>
+                        </span>
+                    </figcaption>
+                </figure>
+                <h3>3.5 Ambientes Eletromagneticamente Sensíveis: Hospitais e Indústria</h3>
+                <p>A característica fundamental da VLC de ser imune e não gerar interferência eletromagnética (EMI) a torna a tecnologia de comunicação sem fio ideal para ambientes sensíveis à RF.
+                     Em hospitais e centros de saúde, a RF pode interferir com equipamentos médicos vitais, como monitores de ressonância magnética (MRI) e dispositivos de monitoramento de pacientes.
+                      A VLC permite a criação de redes de dados seguras e de alta velocidade sem qualquer risco de interferência eletromagnética ou de radiofrequência. Da mesma forma, em ambientes industriais, como fábricas, refinarias de petróleo e usinas de energia, a presença de maquinário pesado e campos eletromagnéticos intensos pode degradar ou impossibilitar a comunicação por RF. A VLC oferece uma alternativa robusta e segura para o controle de processos, monitoramento de ativos e comunicação em tempo real nestes cenários desafiadores. Outras aplicações incluem cabines de aeronaves, onde o uso de RF é restrito durante certas fases do voo.</p>
+                <h3>3.6 Comunicações Subaquáticas e em Ambientes Hostis</h3>
+                <p>A comunicação sem fio subaquática é um desafio notório, pois a radiofrequência (RF) é rapidamente atenuada pela água salgada, tornando-a inadequada para a maioria das aplicações. Em contraste, a luz, especialmente nos comprimentos de onda azul e verde, propaga-se com muito mais eficiência, posicionando a VLC como uma tecnologia viável para mergulhadores, veículos subaquáticos autônomos (AUVs) e sensores. O mesmo princípio se aplica a minas subterrâneas, onde a geologia complexa prejudica a RF, e a iluminação existente pode ser usada para a comunicação.</p>
+                <p>Apesar de sua viabilidade, a comunicação óptica subaquática enfrenta desafios ambientais. A intensidade do sinal é degradada por fatores como absorção, dispersão, variações de salinidade e densidade. Além disso, a turbulência da água é um obstáculo significativo, pois causa oscilações no índice de refração que podem interromper o link de comunicação.</p>
+                <p>Para mitigar esses problemas, os sistemas VLC empregam diversas estratégias. Estas incluem o uso de transmissores e receptores com campos de visão (FOV) adaptáveis e o emprego de modulações de intensidade (IM), como On-Off Keying (OOK) e Pulse Position Modulation (PPM), que são mais baratas e simples, se comparadas a outras técnicas.  Em ambientes subaquáticos, a turbulência (de temperatura, salinidade ou bolhas) cria flutuações aleatórias que enfraquecem e distorcem o sinal óptico, prejudicando a detecção simples do "ligado/desligado" da modulação OOK. Para combater esse problema, as técnicas MIMO (Multiple-Input Multiple-Output) aplicam a diversidade espacial, onde múltiplos transmissores enviam o mesmo sinal e/ou múltiplos receptores o captam. A chave dessa técnica é que a turbulência afeta cada caminho óptico de forma independente; portanto, é muito improvável que todos os sinais cheguem degradados simultaneamente. O receptor combina as várias versões recebidas, priorizando as mais fortes para reconstruir a informação original, mitigando o "desvanecimento" (fading) e aumentando drasticamente a confiabilidade da comunicação. </p>
+                <p>As vantagens centrais da VLC, como maior taxa de dados e menor consumo de energia, fazem dela uma das melhores opções para o ambiente subaquático. Soluções avançadas já exploram sistemas híbridos (acústico e óptico), que podem alterar o modo de operação com base nas propriedades da água.</p>
+                <figure class="figura-vlc_2">
+                    <img src="imagens/Subaq.png" alt="Rede de sensores subaquática com VLC">
+                    <figcaption>
+                        <span class="figura-desc">Comunicação subaquática com VLC</span>
+                        <span class="figura-fonte">
+                            Fonte: <a href="https://www.researchgate.net/figure/An-example-of-underwater-sensor-networks-implemented-with-the-VLC-technology_fig1_338742070" target="_blank" rel="noopener noreferrer">An example of underwater sensor networks implemented with the VLC technology </a>
+                        </span>
+                    </figcaption>
+                </figure>
+                <figure class="figura-vlc">
+                    <img src="imagens/Debaixodagua.png" alt="Tabela de meios debaixo d'água">
+                    
+                    <figcaption>
+                        <span class="figura-desc">
+                            Tabela comparativa dos meios de comunicação subaquáticos
+                        </span>
+                        
+                        <span class="figura-fonte">
+                            Fonte: <a href="https://www.researchgate.net/publication/332659149_Visible_Light_Communication_Concepts_Applications_and_Challenges" target="_blank" rel="noopener noreferrer">Visible Light Communication: Concepts, Applications and Challenges</a>
+                        </span>
+                    </figcaption>
+                </figure>
+                <h3>3.7 A Internet das Coisas (IoT) e Cidades Inteligentes</h3>
+                <p>A VLC está bem posicionada para desempenhar um papel significativo no ecossistema da Internet das Coisas (IoT) e no desenvolvimento de Cidades Inteligentes. A infraestrutura de iluminação LED, tanto em ambientes internos quanto externos (iluminação pública), é onipresente e pode ser aproveitada para fornecer conectividade a um número massivo de dispositivos IoT de baixo custo, através da luz. Em uma cidade inteligente, cada poste de iluminação pública pode se tornar um nó de comunicação, transmitindo dados para sensores de tráfego, parquímetros inteligentes, sistemas de monitoramento ambiental e fornecendo acesso público à internet em áreas específicas. Esta abordagem reduz drasticamente o custo de implantação de uma rede IoT de grande escala, ao mesmo tempo em que melhora a eficiência energética.</p>
+                <p>Uma abordagem utilizada no mercado consiste em uma forma de automação industrial que integra a Comunicação por Luz Visível (VLC) e microcontroladores NodeMCU a uma plataforma de Internet das Coisas (IoT), como a UBIDOTS. O objetivo dessa arquitetura é permitir o monitoramento e o controle contínuo de equipamentos. Nesse sistema, a VLC fornece o link de comunicação local, enquanto o NodeMCU atua como gateway, conectando os dispositivos à internet. A plataforma UBIDOTS centraliza os dados e possibilita o gerenciamento remoto, aumentando a flexibilidade e a acessibilidade para o usuário. Essa integração resulta em uma solução completa para automação inteligente, otimizando o uso de energia e simplificando as rotinas diárias.</p>
+            </section>
+
+            <section id="beneficios">
+                <h2>4.0 Benefícios e Vantagens da VLC</h2>
+                <p>A Comunicação por Luz Visível oferece um conjunto de vantagens distintas que a posicionam como uma tecnologia estratégica para o futuro das comunicações sem fio. Esses benefícios não são características isoladas, mas formam uma cadeia de valor interconectada, onde cada vantagem decorre das propriedades físicas fundamentais da luz como meio de transmissão. A reutilização da infraestrutura de iluminação, por exemplo, não apenas reduz os custos, mas também leva diretamente à eficiência energética, promovendo a sustentabilidade. Da mesma forma, a incapacidade da luz de atravessar paredes é a causa raiz tanto do benefício da segurança aprimorada quanto da limitação do alcance. Esta dualidade exige uma avaliação holística da tecnologia, focando em aplicações que transformam uma aparente limitação em uma vantagem desejável.</p>
+                <h3>4.1 Largura de Banda Vasta e Espectro Não Licenciado</h3>
+                <p>O benefício mais citado e fundamental da VLC é o acesso ao imenso espectro da luz visível, com ondas de 380 nm a 750 nm. Este espectro abrange frequências na faixa de 430 a 790 Terahertz (THz), oferecendo uma largura de banda de aproximadamente 350 THz . Para colocar em perspectiva, a largura de banda útil é cerca de 10.000 vezes maior do que todo o espectro de radiofrequência (3 kHz a 300 GHz) atualmente utilizado para comunicação, já que as aplicações atuais usam geralmente até 30 GHz. A menor disponibilidade de bandas no domínio da RF, aliada à alta demanda de dispositivos sem fio, gera o “Wi-Fi Spectrum Crunch” (esgotamento do espectro Wi-Fi), um problema de congestionamento que a VLC não enfrenta. Além de sua vastidão, este espectro é globalmente não licenciado e de uso livre, o que elimina os altos custos e a complexidade burocrática associados ao licenciamento de bandas de RF, permitindo uma inovação mais rápida e uma implantação mais acessível.</p>
+                <figure class="figura-vlc">
+                    <img src="imagens/Espectro_luz.svg" alt="Diagrama do Espectro Visível">
+                    <figcaption>
+                        <span class="figura-desc">Espectro eletromagnético e parte visível</span>
+                        
+                        <span class="figura-fonte">
+                            Fonte: <a href="https://pt.wikipedia.org/wiki/Espectro_vis%C3%ADvel" target="_blank" rel="noopener noreferrer">Espectro visível (Wikipedia)</a>
+                        </span>
+                    </figcaption>
+                </figure>
+                <h3>4.2 Segurança Intrínseca e Imunidade a Interferência Eletromagnética (EMI)</h3>
+                <p>A natureza da propagação da luz confere à VLC vantagens significativas em segurança e robustez. Como a luz visível não penetra em objetos opacos, como paredes e divisórias, o sinal de comunicação fica naturalmente confinado ao espaço físico onde a luz está presente, como uma única sala ou corredor. Isso cria uma camada de segurança física inerente, pois torna extremamente difícil para um agente externo interceptar a comunicação (eavesdropping) sem ter uma linha de visada (Line-of-Sight - LOS) direta com a fonte de luz. Adicionalmente, por ser uma tecnologia baseada em óptica, a VLC é completamente imune à interferência eletromagnética (EMI) gerada por fontes de RF, como roteadores Wi-Fi, telefones celulares ou equipamentos industriais. Da mesma forma, a VLC não gera EMI, o que a torna segura para uso em ambientes eletromagneticamente sensíveis.</p>
+                <p>Esta característica de confinamento torna-se uma vantagem de segurança crucial quando comparada às tecnologias de RF, como o Wi-Fi. As ondas de rádio de um roteador podem se propagar por centenas de metros, atravessando paredes e outras superfícies sólidas, o que expõe a rede a riscos de interceptação (eavesdropping) ou "farejamento" (sniffing) por agentes externos. O Li-Fi, ao contrário, limita a comunicação ao "cone de cobertura" da luz. Como o sinal não vaza por paredes, lonas ou cortinas, ele elimina por padrão a possibilidade de ataques do tipo "man-in-the-middle" (MitM) vindos de fora da sala, garantindo um nível de privacidade que as redes profissionais e pessoais exigem.</p>
+                <p>Devido a essa robustez, a tecnologia oferece o que é considerado um nível de segurança de "padrão militar", sendo adotada por setores de defesa (como o Exército dos EUA) e indústrias. A aparente vulnerabilidade da "linha de visada" (LOS) é de difícil exploração, já que tentativas de interceptação à distância usando lentes ou telescópios são impraticáveis. Isso se deve ao campo de visão estreito desses instrumentos, que só conseguiriam focar no uplink ou no downlink (e não em ambos), inviabilizando a interceptação da comunicação por completo. Além disso, mesmo que um sinal fosse captado, a energia detectada seria tipicamente muito baixa para permitir uma decodificação ou demodulação bem-sucedida.</p>
+                <figure class="figura-vlc_4">
+                    <video autoplay loop muted playsinline>
+                    <source src="imagens/v2.mp4" type="video/mp4">
+                    </video>
+                    
+                    <figcaption>
+                        <span class="figura-desc">Comparação de segurança Wi-Fi x Li-Fi</span>
+                        <span class="figura-fonte">Fonte: 
+                            <a href="https://www.purelifi.com/about-lifi/" target="_blank">pureLiFi - What is LiFi & How Does it Work?</a>
+                        </span>
+                    </figcaption>
+                </figure>
+                <h3>4.3 Eficiência Energética e Sustentabilidade</h3>
+                <p>A VLC é uma tecnologia inerentemente "verde" e energeticamente eficiente. Sua principal vantagem nesse aspecto é a capacidade de dupla finalidade: comunicação e iluminação são realizadas pelo mesmo dispositivo (o LED) e com o mesmo consumo de energia primário. A energia adicional necessária para modular a luz e transmitir dados é marginal em comparação com a energia já gasta para a iluminação do ambiente. Isso contrasta fortemente com as redes de RF, que requerem a implantação de pontos de acesso e antenas dedicados, cada um com seu próprio consumo de energia. Ao alavancar uma infraestrutura que já está em processo de instalação em escala global por razões de eficiência de iluminação, a VLC promove a sustentabilidade e reduz a pegada de carbono das redes de comunicação.</p>
+                <h3>4.4 Baixa Latência e Altas Taxas de Transmissão de Dados</h3>
+                <p>A comunicação através da luz é muito rápida por não ter um complexo processamento de sinal nem atrasos associados à recepção de dados, o que permite que os sistemas VLC atinjam latências muito baixas, uma característica crucial para aplicações em tempo real, como controle industrial, jogos online e, especialmente, comunicações veiculares de segurança (V2X - Vehicle-to-Everything). Em termos de velocidade, embora os LEDs comerciais tenham uma largura de banda de modulação limitada, o uso de técnicas avançadas de modulação como OFDM (Orthogonal Frequency Division Multiplexing) e de fontes de luz de nova geração, como micro-LEDs (µ-LEDs) e diodos laser (LDs), já demonstrou taxas de dados na ordem de múltiplos Gigabits por segundo (Gbps) em ambientes de laboratório (46,4 Gbps). O potencial teórico da VLC é de atingir velocidades superiores a 100 Gbps, alinhando-se perfeitamente com os requisitos de capacidade das futuras redes 6G e permitindo 1000 vezes mais densidade de dados transmitidos que o Wi-Fi. Resultados experimentais demonstram que um campo de visão (FOV) mais estreito está associado a uma maior taxa de transmissão de dados, comprovado pela redução do FOV de um intervalo de 40-50 graus para 5 graus que proporcionou um aumento de 50 vezes na taxa de transmissão.</p>
+                <h3>4.5 Custo-Benefício e Reutilização de Infraestrutura Existente</h3>
+                <p>A capacidade de reutilizar a infraestrutura de iluminação LED existente para fins de comunicação é uma das vantagens econômicas mais significativas da VLC. À medida que edifícios, residências e cidades inteiras migram para a iluminação LED por razões de eficiência energética, a infraestrutura para uma rede de comunicação de alta capacidade é implantada passivamente, sem custos adicionais significativos. Isso reduz drasticamente o custo de capital (CAPEX) para a implantação de redes de dados, especialmente em ambientes internos densos, em comparação com a necessidade de instalar cabos e pontos de acesso dedicados para tecnologias como Wi-Fi ou redes celulares.</p>
+            </section>
+
+           <section id="limitacoes">
+            <h2>5.0 Desafios e Limitações da VLC</h2>
+            <p>Apesar de seu vasto potencial, a Comunicação por Luz Visível enfrenta um conjunto de desafios técnicos e práticos que precisam ser superados para sua adoção em larga escala. Essas limitações, assim como seus benefícios, derivam diretamente das propriedades físicas da luz. </p>
+            <p>Os desafios se enquadram em duas categorias principais: a interação com o ambiente e a própria implementação da comunicação bidirecional. A primeira categoria inclui a necessidade de manter a linha de visada, a complexa gestão da mobilidade do usuário e a suscetibilidade à interferência da luz solar e de outras fontes artificiais. A segunda abrange questões de usabilidade e funcionalidade, como a complexidade de estabelecer um canal de uplink (o envio de dados de volta ao transmissor), a necessidade de suportar diferentes níveis de iluminação (escurecimento) e a prevenção do flickering (cintilação), que pode causar desconforto visual e riscos à saúde. </p>
+                
+            <h3>5.1 Desafios Físicos: Alcance, Bloqueio e Linha de Visada (LOS) </h3>
+            <p>A limitação mais fundamental da VLC é sua dependência de um caminho de Linha de Visada (LOS) entre o transmissor e o receptor. Ao contrário das ondas de rádio, que podem penetrar em muitos materiais, a luz visível não é capaz de penetrar a maioria dos objetos opacos. A presença de obstáculos físicos, como móveis, uma pessoa caminhando pela sala, ou até mesmo a mão do usuário, pode interromper o sinal e causar uma perda de conexão, um fenômeno conhecido como "shadowing". </p>
+            <p>Este desafio, no entanto, vai além do simples bloqueio estático, sendo agravado pelo constante movimento dos usuários. A comunicação VLC difere significativamente da radiofrequência, pois depende fortemente da orientação do receptor em relação ao transmissor. Sendo assim, essa simples mobilidade, como girar um smartphone na mão, pode fazer com que a Relação Sinal-Ruído (SNR) varie drasticamente, mesmo que o receptor ainda esteja dentro da área de cobertura da luz. </p>
+            <p>Embora as reflexões da luz em paredes e outras superfícies possam criar caminhos NLOS (Sem Linha de Visada) e mitigar parcialmente o problema do bloqueio direto, esses sinais refletidos são significativamente mais fracos. A recepção de fótons fora da linha de visão é possível, mas resulta em taxas de dados menores devido à fraqueza do sinal. </p>
+            <p>Finalmente, o alcance efetivo do sinal é outro desafio físico, já que a intensidade do sinal óptico decai rapidamente com a distância, e há uma dualidade entre a velocidade e a mobilidade: um ângulo de emissão mais estreito no transmissor resulta em um sinal mais forte e maior velocidade de comunicação, mas um ângulo de emissão maior é necessário para garantir a cobertura total do ambiente e suportar o movimento do usuário. </p>
+            <figure class="figura-vlc">
+                    <img src="imagens/los.png" alt="Linha de Visada (LOS) na VLC">
+                    <figcaption>
+                        <span class="figura-desc">Linha de Visada (LOS) na VLC</span>
+
+                        <span class="figura-fonte">
+                            Fonte: <a href="https://www.lifi-centre.com/robust-connection-and-flexibility-in-a-networked-indoor-visible-light-communication-vlc-system" target="_blank" rel="noopener noreferrer">Robust connection and flexibility in a networked indoor visible light communication (VLC) system (Lifi Research and Development Centre)</a>
+                        </span>
+                    </figcaption>
+                </figure>
+                
+            <h3>5.2 Interferência de Fontes de Luz </h3>
+            <p>Os receptores VLC são, por natureza, altamente sensíveis à luz, o que os torna suscetíveis à interferência de múltiplas fontes luminosas no ambiente. O principal problema causado por essa interferência óptica é a degradação da Relação Sinal-Ruído (SNR). </p>
+            <p>A SNR é a medida de desempenho fundamental da comunicação: ela compara o nível do sinal de dados que o receptor deseja captar (a luz modulada vinda da lâmpada VLC) com o nível de todo o "ruído" de fundo indesejado (qualquer outra luz, como a luz solar ou de outras lâmpadas). Quando a SNR é alta, o sinal de dados é limpo e muito mais forte que o ruído, permitindo uma conexão rápida e estável, por outro lado, quando a luz solar ou outras fontes interferem, elas aumentam o nível de ruído, o que "degrada a SNR". Isso torna difícil para o receptor "ouvir" o sinal de dados, causando erros, lentidão ou queda na conexão. </p>
+                
+            <p><b><u>Fontes de Interferência e Ruído:</u></b> </p>
+                <ul>
+                <li><b>Luz Natural (Solar):</b> Em ambientes externos ou em locais internos próximos a janelas, a luz solar direta pode facilmente saturar o receptor, tornando a comunicação impossível. </li>
+                <li><b>Luz Artificial:</b> Outras fontes de iluminação que não pertencem à rede VLC, como lâmpadas incandescentes e fluorescentes, também causam interferência destrutiva e introduzem ruído óptico no sistema. </li>
+                    <li><b>Multi-caminho (Auto-interferência):</b> O próprio sinal VLC pode sofrer interferência.À medida que o sinal se propaga, ele sofre refração e reflexão em superfícies como paredes, fazendo com que o sinal possa chegar ao receptor mais de uma vez. Isso pode degradar a qualidade do sinal original. </li>
+                </ul>
+                
+            <p><b><u>Estratégias de Mitigação:</b></u> </p>
+                <ul>
+                <li><b>Filtragem e Amplificação:</b> A abordagem mais comum é o uso de filtros ópticos na frente do receptor, que têm o objetivo de eliminar as ondas destrutivas de fontes naturais. Além disso, amplificadores de sinais são usados para tornar o sinal recebido menos propenso a interferências e ruídos, aumentando o peso do sinal original. </li>
+                <li><b>Escolha do Receptor (LED vs. Fotodiodo):</b> A seleção do sensor é uma estratégia de mitigação fundamental. 
+                        <ul>
+                        <li><b>Fotodiodos:</b> São a escolha padrão, mas tendem a ser extremamente sensíveis. Eles captam um espectro muito amplo, incluindo ultravioleta e infravermelho, o que os torna altamente vulneráveis à saturação pela luz ambiente. Em testes externos, foi observado que o fotodiodo ficava saturado rapidamente. </li>
+                        <li><b>LEDs como Receptores:</b> Os próprios LEDs podem ser usados como sensores. Eles atuam como fotodiodos seletivos, pois captam somente ondas próximas às que eles transmitem. Isso os torna um filtro natural contra ruídos de outras fontes e muito mais robustos à saturação, obtendo sucesso na recepção de dados em ambientes onde os fotodiodos falharam. </li>
+                        </ul>
+                    </li>
+                </ul>
+                
+            <h3>5.3 A Largura de Banda de Modulação Limitada dos LEDs Comerciais </h3>
+            <p>Embora o espectro da luz visível seja teoricamente ilimitado para fins práticos, a capacidade de utilizar essa largura de banda é, na realidade, restringida pelas características dos próprios dispositivos transmissores. O principal gargalo para o aumento das taxas de dados reside nos LEDs comerciais mais comuns e de baixo custo, conhecidos como phosphor-converted LEDs (pc-LEDs). Esses dispositivos não emitem luz branca diretamente, mas utilizam um chip de LED azul revestido com uma camada de fósforo, que converte parte da luz azul em verde, amarelo e vermelho para gerar a luz branca percebida. O problema é que este processo de conversão tem uma "resposta lenta", e essa lentidão intrínseca do fósforo limita severamente a largura de banda de modulação do LED. </p>
+            <p>Para superar esse gargalo e alcançar as velocidades de Gbps necessárias para aplicações futuras, duas frentes principais de desenvolvimento são necessárias. A primeira é de software e processamento de sinal, utilizando esquemas de modulação espectralmente eficientes, como o OFDM (Orthogonal Frequency Division Multiplexing), frequentemente combinado com técnicas MIMO. A segunda é de hardware, recorrendo a componentes mais avançados e caros, mas que não sofrem dessa limitação, como Diodos Laser (LDs) ou micro-LEDs (μ-LEDs), que permitem comunicação paralela de alta densidade e já demonstraram capacidade para taxas de dados muito altas. </p>
+                
+            <h3>5.4 Complexidade do Canal de Uplink </h3>
+            <p>Enquanto o canal de downlink (transmitir dados da luminária de teto para o dispositivo do usuário) é relativamente simples de implementar, o canal de uplink (do dispositivo de volta para a luminária) representa um desafio considerável. Sendo assim, a maioria das pesquisas em VLC historicamente tem seu foco em comunicações unidirecionais. O principal obstáculo para um uplink baseado na própria luz visível é o conforto humano: a emissão de luz a partir de dispositivos pessoais (como notebooks ou smartphones) em direções opostas às luminárias não seria adequada em ambientes internos, pois poderia causar desconforto visual aos usuários. </p>
+            <p>Para contornar esse problema, diversas alternativas são propostas na literatura, cada uma com suas próprias complexidades e desvantagens: </p>
+            <figure class="figura-vlc">
+                    <img src="imagens/uplink.jpg" alt="Downlink e Uplink na VLC">
+                    <figcaption>
+                        <span class="figura-desc">Downlink e Uplink na VLC</span>
+
+                        <span class="figura-fonte">
+                            Fonte: <a href="https://www.mdpi.com/2079-9292/9/9/1349" target="_blank" rel="noopener noreferrer">Framework of IoT Services over Unidirectional Visible Lights Communication Networks (Artigo)</a>
+                        </span>
+                    </figcaption>
+                </figure>
+                
+            <h4>Alternativa 1: Radiofrequência (RF) </h4>
+                <p><b><u>Funcionamento:</b></u> Criação de um sistema híbrido (VLC para downlink e RF para uplink) </p>
+            <p><b><u>Vantagem:</b></u> </p>
+                <ul>
+                <li><b>Conforto Visual: </b>Esta alternativa oferece a vantagem de não haver uma fonte de luz saindo do dispositivo pessoal (como um notebook), resolvendo o problema de desconforto visual que um uplink baseado em luz visível poderia causar. </li>
+                </ul>
+            <p><b><u>Desvantagens:</b></u> </p>
+                <ul>
+                <li><b>Custo e Complexidade:</b> Exige a instalação de transceptores, dispositivo que combina um transmissor e receptor em uma única unidade, RF no lugar tanto do emissor quanto do receptor, o que vai contra a premissa de baixo custo da VLC. </li>
+                <li><b>Restrição de Ambiente: </b>Anula a principal vantagem da VLC em ambientes sensíveis à interferência eletromagnética (EMI), tornando a solução inadequada para locais como hospitais e aviões. </li>
+                </ul>
+                
+            <h4>Alternativa 2: Infravermelho (IR) </h4>
+                <p><b><u>Funcionamento:</b></u> Utiliza o espectro infravermelho para o uplink.</p>
+                <p><b><u>Vantagem:</b></u></p>
+                <ul>
+                <li> <b>Sem Interferência:</b> As ondas IR não interferem com a comunicação de luz visível. </li>
+                </ul>
+                
+            <h4>Alternativa 3: Luz Visível (VLC) com TDD </h4>
+            <p><b><u>Funcionamento:</b></u> Esta técnica utiliza a própria luz visível tanto para o downlink quanto para o uplink, mas gerencia o tráfego dividindo o canal no tempo através do TDD (Duplexação por Divisão de Tempo), que funciona alocando slots de tempo específicos exclusivamente para o downlink (a lâmpada envia dados) e outros slots exclusivamente para o uplink (o dispositivo envia dados). </p>
+            <p><b><u>Vantagem:</b></u> Aloca slots de tempo específicos para downlink e uplink, evitando interferência de reflexão. </p>
+            <p><b><u>Desvantagem:</b></u> Diminui a taxa de dados total do sistema, pois o canal precisa ser dividido ao longo do tempo. </p>
+                
+            <h3>5.5 Fatores Ambientais em Aplicações Externas (Névoa, Chuva) </h3>
+            <p>Para aplicações externas, como os Sistemas de Transporte Inteligentes (ITS), a VLC enfrenta um conjunto de desafios adicionais impostos pelo ambiente. O canal de propagação em ambientes externos é altamente dinâmico, e a qualidade da comunicação é fortemente impactada pelas condições atmosféricas. </p>
+            <p>Fenômenos como névoa, chuva intensa e neve podem causar espalhamento e absorção significativos do sinal de luz. Isso resulta em uma forte atenuação do sinal, reduzindo drasticamente o alcance da comunicação e a confiabilidade do link. Além da absorção por partículas, as próprias turbulências atmosféricas podem degradar o sinal óptico. Esta instabilidade ambiental é uma preocupação séria para aplicações críticas de segurança que dependem de um link de comunicação constante e confiável. </p>
+            <figure class="figura-vlc">
+                    <img src="imagens/ambiente.ppm" alt="Interferência Ambiental na VLC">
+                    <figcaption>
+                        <span class="figura-desc">Interferência Ambiental na VLC</span>
+
+                        <span class="figura-fonte">
+                            Fonte: <a href="https://www.researchgate.net/publication/337512779_Experimental_Observations_on_the_Feasibility_of_VLC-Based_V2X_Communications_under_various_Environmental_Deterrents/figures?lo=1" target="_blank" rel="noopener noreferrer">Experimental Observations on the Feasibility of VLC-Based V2X Communications under various Environmental Deterrents (Artigo)</a>
+                        </span>
+                    </figcaption>
+                </figure>
+                
+            <h3>5.6 Padronização e Integração com Infraestruturas Legadas </h3>
+            <p>Para que a VLC atinja uma adoção em massa, a interoperabilidade entre dispositivos de diferentes fabricantes é essencial. Embora o padrão IEEE 802.15.7 forneça uma base para as camadas Física e MAC, ele ainda não é universalmente adotado e a tecnologia continua a evoluir rapidamente, com novas técnicas (como OFDM) que ainda não foram totalmente padronizadas, dificultando a comunicação transparente entre diferentes sistemas. </p>
+            <p>Além disso, a integração de sistemas VLC com as redes de comunicação de backhaul existentes apresenta desafios de engenharia significativos. A conexão das luminárias à internet requer soluções criativas, como arquiteturas híbridas que utilizam Power Line Communication (PLC), tecnologia que permite a transmissão de dados através da própria fiação elétrica. Já outra abordagem é a modificação de lâmpadas comerciais para embarcar um System-on-a-Chip (SoC), um único chip que contém um sistema computacional completo, capaz de executar um sistema operacional como o Linux, permitindo que a própria lâmpada gerencie sua conexão à rede. </p>
+            <p>Por fim, garantir um handover (transferência de conexão) contínuo e transparente é um requisito crucial para uma experiência de usuário satisfatória em ambientes móveis. À medida que um usuário se move, a conexão precisa passar suavemente entre diferentes células VLC (lâmpadas) e, mais importante, entre a rede VLC e as redes RF (como Wi-Fi ou celular) quando o sinal de luz é perdido. Tecnologias como o LiFi já preveem mecanismos de handover dinâmico para sistemas híbridos, buscando reduzir a quantidade de transferências e manter a maior velocidade possível. O desafio é complexo, pois a própria natureza do sinal VLC, que pode variar drasticamente com a simples orientação do dispositivo, exige uma gestão de link muito mais ágil do que a das redes de RF. </p>
+                
+            <h3>5.7 Funcionamento em Ambientes de Baixa Luminosidade </h3>
+            <p>Uma das barreiras mais evidentes para a adoção do VLC é o seu funcionamento em ambientes onde a iluminação é baixa ou indesejada, como durante a noite. Intuitivamente, se a comunicação depende da luz, o ato de apagar a lâmpada significaria a perda da conexão com a internet. Este desafio é tecnicamente conhecido como suporte ao "escurecimento" (dimming). A potência do sinal VLC está diretamente relacionada à intensidade da luz; portanto, um brilho muito baixo teoricamente resulta em menor alcance e velocidade. </p>
+            <p>No entanto, os sistemas VLC são projetados para superar essa limitação. O padrão IEEE 802.15.7 define modulações específicas para suportar o controle de brilho sem interromper a comunicação. A modulação VPPM (Variable Pulse Position Modulation) codifica os dados usando a posição dos pulsos de luz e, simultaneamente, utiliza a largura desses pulsos (PWM) para ajustar a intensidade luminosa, permitindo que os dados continuem a ser transmitidos mesmo quando a luz está dimerizada. </p>
+            <p>Pesquisas mais recentes levaram este conceito ainda mais longe, desenvolvendo primitivas de comunicação que funcionam mesmo quando a lâmpada está aparentemente "apagada". A solução consiste em codificar os dados em pulsos de luz muito curtos e de altíssima frequência. Esses pulsos são imperceptíveis ao olho humano, mas podem ser perfeitamente detectados por fotodiodos, criando um novo paradigma onde a comunicação por luz visível é mantida mesmo no escuro, ao mesmo tempo em que o consumo de energia é reduzido. </p>
+            <p>É importante notar que essas soluções se aplicam quando o receptor ainda está no ambiente, mas com a luz principal apagada, já em casos em que o sinal de luz é completamente bloqueado, como quando o dispositivo é colocado em um bolso ou o usuário se move para outra sala, a comunicação VLC é interrompida. Sendo assim, a solução proposta é a integração com redes de radiofrequência, através de sistemas híbridos (como LiFi/Wi-Fi) que possuem mecanismos de handover dinâmico para transferir a conexão para o Wi-Fi automaticamente. </p>
+
+            <figure class="figura-vlc_2">
+                    <img src="imagens/escuro.webp" alt="Ambiente de baixa luminosidade na VLC">
+                    <figcaption>
+                        <span class="figura-desc">Ambiente de baixa luminosidade na VLC</span>
+
+                        <span class="figura-fonte">
+                            Fonte: <a href="https://www.oledcomm.net/blog/fundamentals-of-visible-light-communication" target="_blank" rel="noopener noreferrer">Fundamentals of Visible Light Communication Technology(Oledcomm)</a>
+                        </span>
+                    </figcaption>
+                </figure>
+                
+            <h3>5.8 Alto Consumo Energético em Aparelhos Móveis </h3>
+            <p>Além dos desafios relacionados ao canal de uplink, como o desconforto visual, a implementação da comunicação bidirecional em dispositivos móveis enfrenta uma barreira prática significativa: o consumo de energia. </p>
+            <p>Para que um smartphone ou tablet possa transmitir dados de volta à infraestrutura de iluminação (realizando o uplink), ele precisaria utilizar seus próprios LEDs como transmissores. No entanto, a utilização de LEDs para sistemas VLC em smartphones pode ser custosa em termos de energia. Este custo energético adicional representa um consumo considerável para dispositivos que dependem de bateria, impactando diretamente sua autonomia e a experiência do usuário, o que se torna um obstáculo importante para a adoção da tecnologia em larga escala nesses aparelhos. </p>
+
+            <h3>5.9 Cintilação (Flickering) e Conforto Visual </h3>
+            <p>Um dos principais desafios técnicos e de usabilidade da VLC é o flickering, definido como a flutuação no brilho da luz. Este é um obstáculo crítico para a adoção da tecnologia, pois oscilações perceptíveis aos olhos humanos podem causar desconforto e potenciais riscos à saúde. </p>
+            <p>O Desafio Técnico: Existe uma dualidade fundamental no design do sistema. Para que a comunicação seja imperceptível, os componentes de frequência do sinal devem ser maiores que o limite de percepção humana (acima de 3 KHz). No entanto, certos padrões de dados (como uma longa sequência de bits '0's ou '1's) podem criar componentes de frequência muito baixos que caem nessa faixa perceptível, causando a cintilação. </p>
+            <p>Tipos de Flicker e Soluções (Padrão IEEE 802.15.7): O padrão oficial de VLC categoriza o flicker e define medidas específicas para mitigá-lo: </p>
+                <ul>
+                <li><b><u>Flicker Intra-frame: </b></u>
+                        <ul>
+                        <li><b>Definição:</b> É a oscilação de brilho detectada dentro de um único quadro (frame) de dados. Isso pode acontecer, por exemplo, se a modulação OOK (On-Off Keying) precisar transmitir uma longa sequência de '0's (luz apagada). </li>
+                        <li><b>Solução:</b> A solução é utilizar modulações ou codificações de linha que corrijam a cintilação.  Um exemplo prático é o uso da Codificação Manchester. Nela, '0' e '1' são representados por transições (ex: 01 e 10), garantindo que sempre haja símbolos de luz acesa e apagada, o que resolve o problema de longas sequências idênticas. </li>
+                        </ul>
+                    </li>
+                <li><b><u>Flicker Inter-frame: </b></u>
+                        <ul>
+                        <li><b>Definição:</b> É a oscilação de brilho percebida entre transmissões adjacentes, ou seja, a diferença de brilho entre um quadro de dados e o "tempo ocioso" do LED. </li>
+                        <li><b>Solução:</b> A solução é preencher o tempo em que o LED estaria ocioso com "padrões" de visibilidade. Esses padrões são projetados para manter o brilho médio da lâmpada em uma frequência acima da detectada pelos humanos, evitando a percepção de que a luz está "piscando" entre as transmissões de dados. </li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+
+            <section id="conclusao">
+            <h2>6.0 Conclusão e Perspectivas Futuras </h2>
+            <p>A Comunicação por Luz Visível representa uma mudança de paradigma na forma como concebemos a conectividade sem fio. Nascida da convergência entre a crescente demanda por largura de banda, a VLC transcendeu o status de conceito acadêmico para se tornar uma tecnologia viável com o potencial de remodelar significativamente o cenário das comunicações. Sua capacidade de transformar a infraestrutura de iluminação onipresente em uma rede de dados de alta velocidade oferece uma solução eficiente para muitos dos desafios enfrentados pelas tecnologias de RF convencionais. </p>
+            <p>Esta tecnologia surge como uma oportunidade crucial para o futuro das redes sem fio. A demanda por recursos de rede continua a crescer exponencialmente, impulsionada pela popularização massiva de smartphones e outros dispositivos wireless. Esse crescimento levanta questionamentos sobre a capacidade da infraestrutura atual, destacando a "possível crise no espectro WiFi", onde a demanda por recursos pode superar a capacidade da rede. É neste cenário que a VLC se destaca como uma alternativa para complementar a infraestrutura existente, oferecendo acesso a um espectro livre, de altíssimas frequências e utilizando a infraestrutura de lâmpadas LEDs já disponível. Este potencial alinha a VLC diretamente com a futura adoção de conceitos como a Internet das Coisas (IoT). </p>
+                
+            <h3>6.1 Síntese do Potencial e dos Desafios da VLC </h3>
+            <p>A Comunicação por Luz Visível apresenta uma dualidade clara entre seu vasto potencial e seus desafios de implementação. </p>
+            <p><b><u>Potencial e Vantagens Estratégicas:</b></u> </p>
+                <ul>
+                <li><b>Espectro e Largura de Banda:</b> A VLC oferece acesso a um espectro de frequência massivo (na ordem de 400 THz), que é 1.000 vezes maior que o de radiofrequência e, crucialmente, não é licenciado. Isso é uma solução direta para a "possível crise no espectro WiFi". </li>
+                <li><b>Altas Taxas de Dados:</b> Devido às altíssimas frequências da luz, a tecnologia permite velocidades de transmissão muito elevadas, com potencial para superar 100 Gbps. </li>
+                <li><b>Segurança Intrínseca:</b> Ao contrário da RF, a luz não atravessa paredes. Isso confina o sinal a um ambiente físico, oferecendo um nível de segurança muito mais alto contra interceptação externa. </li>
+                <li><b>Imunidade a EMI:</b> A VLC não gera interferência eletromagnética, tornando-a a tecnologia ideal para ambientes sensíveis à RF, como hospitais e cabines de aeronaves. </li>
+                <li><b>Eficiência e Custo:</b> A tecnologia aproveita a infraestrutura de iluminação LED já existente, resultando em baixo custo de implementação e alta eficiência energética, pois a energia já está sendo usada para iluminação. </li>
+                <li><b>Aplicações Específicas:</b> A VLC tem potencial para trazer melhorias significativas em áreas como sistemas de localização interna de alta precisão, comunicação aquática e redes veiculares. </li>
+                </ul>
+                
+            <p><b><u>Desafios e Limitações:</b></u> </p>
+                <ul>
+                <li><b>Linha de Visada (LOS) e Mobilidade:</b> A comunicação depende de uma linha de visada, pois o sinal é bloqueado por obstáculos e sombras. A mobilidade é um desafio, pois a qualidade do sinal (SNR) pode variar drasticamente com o simples movimento ou rotação do dispositivo receptor. </li>
+                <li><b>Interferência da Luz Ambiente:</b> Os receptores são altamente suscetíveis a ruídos de outras fontes. A luz solar, em particular, pode facilmente saturar o receptor, assim como outras luzes artificiais (incandescentes, fluorescentes). </li>
+                <li><b>Complexidade do Canal de Uplink:</b> Enviar dados de volta do dispositivo para a lâmpada é um obstáculo significativo. O uso de luz visível para o uplink pode causar desconforto visual, enquanto o uso de RF híbrida adiciona custo e anula o benefício da imunidade à EMI. </li>
+                <li><b>Níveis de Iluminação (Dimming): </b>A potência do sinal está diretamente ligada à intensidade da luz. Garantir que a comunicação funcione quando as luzes estão "escurecidas" é um requisito complexo. </li>
+                <li><b>Cintilação (Flickering):</b> A modulação da luz pode causar oscilações perceptíveis aos olhos humanos, o que pode gerar "desconfortos e riscos para a saúde". </li>
+                </ul>
+            <p>Esta dualidade define o papel mais provável da VLC não como uma substituta universal da RF, mas como uma tecnologia complementar. Ela está destinada a prosperar em cenários específicos, como ambientes internos de curta distância (escritórios e residências), onde suas vantagens únicas superam suas limitações inerentes. </p>
+                
+            <h3>6.2 Perspectivas Futuras: Integração com Redes Atuais e Sistemas Híbridos </h3>
+            <p>O avanço contínuo da VLC dependerá de inovações em múltiplas frentes, principalmente na sua integração com outras redes existentes e com os paradigmas futuros da computação. As principais tendências de pesquisa apontam para: </p>
+                <ul>
+                <li><b>Integração com Redes 5G e Internet das Coisas (IoT):</b> As pesquisas indicam o uso de sistemas VLC como um componente de integração para as atuais redes 5G. Nesta arquitetura, a luz pode complementar a infraestrutura celular para atender à alta demanda de tráfego, principalmente em ambientes fechados onde os sinais de 5G podem ter dificuldade de penetração ou sofrer com a alta densidade de usuários. Esta integração está diretamente alinhada com a crescente adoção de conceitos como a Internet das Coisas (IoT). </li>
+                <li><b>Desenvolvimento de Sistemas Híbridos (VLC/Wi-Fi):</b> Há um foco significativo no desenvolvimento de sistemas em que a arquitetura de rede integra tanto o Wi-Fi quanto a VLC. Um exemplo dessa abordagem é o sistema "PLiFi", uma arquitetura híbrida que utiliza a tecnologia Power Line Communication (PLC) para conectar os pontos de acesso Wi-Fi diretamente às lâmpadas LED, criando uma rede de dados unificada. </li>
+                <li><b>Padronização e Prototipagem Aberta:</b> Para que essas novas arquiteturas e protocolos avancem, a comunidade acadêmica tem focado na necessidade de padronizar as pesquisas. O desenvolvimento de plataformas de prototipagem que sejam flexíveis, de baixo custo e de código aberto é visto como um passo crucial. Plataformas como a "OpenVLC", por exemplo, são projetadas para facilitar os testes e o desenvolvimento de novos sistemas, permitindo que mais grupos de pesquisa explorem e validem novas soluções de comunicação por luz visível. </li>
+                </ul>
+            <figure class="figura-vlc">
+                    <img src="imagens/vlc_iot.png" alt="Integracao da VLC com IoT">
+                    <figcaption>
+                        <span class="figura-desc">Integração da VLC com IoT</span>
+
+                        <span class="figura-fonte">
+                            Fonte: <a href="https://www.mdpi.com/2227-7080/10/1/28" target="_blank" rel="noopener noreferrer">Visible Light Communications for Internet of Things: Prospects and Approaches, Challenges, Solutions and Future Directions (Artigo)</a>
+                        </span>
+                    </figcaption>
+                </figure>
+                
+            <h3>6.3 O Papel Integrado da VLC no Ecossistema de Comunicações do Futuro </h3>
+            <p>A visão mais realista e poderosa para o futuro da VLC é a de sua integração perfeita dentro de um ecossistema de comunicação híbrido, onde múltiplas tecnologias sem fio coexistem e colaboram. A VLC é vista como uma oportunidade fundamental para complementar a atual infraestrutura de redes sem fio, ajudando a mitigar a "crise do espectro WiFi". </p>
+            <p>Neste cenário, os dispositivos dos usuários alternarão de forma transparente entre redes VLC e Wi-Fi, selecionando dinamicamente o melhor meio de transmissão com base no contexto e localização. A divisão de papéis seria clara: a VLC se tornaria a tecnologia preferencial para conectividade de alta velocidade em ambientes internos densos, como escritórios e residências onde a distância é curta. Enquanto isso, a RF (Wi-Fi e redes celulares) continuaria a fornecer a cobertura de área ampla e a mobilidade robusta que a caracterizam. </p>
+            <p>A realização desta visão de redes híbridas depende fundamentalmente de avanços em mecanismos de handover dinâmico, como os já propostos para sistemas LiFi/WiFi. </p>
+            </section>
+<section id="perguntas">
+    <h2>7.0 Perguntas</h2>
+
+
+    <div class="quiz-item">
+        <h4 class="quiz-question">1) Qual é o principal problema da comunicação por Radiofrequência (RF), como o Wi-Fi, que a VLC se propõe a resolver?</h4>
+        <div class="quiz-options" style="display: flex; flex-direction: column; gap: 12px;">
+            <button style="max-width: 800px; width: 100%; padding: 16px 20px; font-size: 17px; text-align: left; border: 2px solid #ddd; border-radius: 8px; background-color: white; cursor: pointer; min-height: 55px;">O alto custo dos roteadores Wi-Fi.</button>
+            <button data-correct="true" style="max-width: 800px; width: 100%; padding: 16px 20px; font-size: 17px; text-align: left; border: 2px solid #ddd; border-radius: 8px; background-color: white; cursor: pointer; min-height: 55px;">A saturação e o congestionamento do espectro de RF.</button>
+            <button style="max-width: 800px; width: 100%; padding: 16px 20px; font-size: 17px; text-align: left; border: 2px solid #ddd; border-radius: 8px; background-color: white; cursor: pointer; min-height: 55px;">A baixa velocidade do Wi-Fi para streaming.</button>
+            <button style="max-width: 800px; width: 100%; padding: 16px 20px; font-size: 17px; text-align: left; border: 2px solid #ddd; border-radius: 8px; background-color: white; cursor: pointer; min-height: 55px;">A dificuldade de instalar cabos de rede.</button>
+        </div>
+        <div class="quiz-explanation" style="max-width: 800px; margin-top: 20px; padding: 20px; background-color: #e3f2fd; border-left: 4px solid #2196F3; border-radius: 4px;">
+            <p><strong>Resposta Correta: A saturação e o congestionamento do espectro de RF.</strong></p>
+            <p>Com o crescimento exponencial de dispositivos (IoT, streaming), as bandas de frequência de rádio estão congestionadas, causando lentidão e interferência. A VLC utiliza o espectro da luz visível, que é 10.000 vezes maior e não licenciado, resolvendo esse gargalo.</p>
+        </div>
+    </div>
+
+    <div class="quiz-item">
+        <h4 class="quiz-question">2) Por que a VLC é ideal para ambientes com alta segurança (escritórios) ou com equipamentos sensíveis (hospitais, aviões)?</h4>
+        <div class="quiz-options" style="display: flex; flex-direction: column; gap: 12px;">
+            <button style="max-width: 800px; width: 100%; padding: 16px 20px; font-size: 17px; text-align: left; border: 2px solid #ddd; border-radius: 8px; background-color: white; cursor: pointer; min-height: 55px;">Porque a luz é mais rápida que as ondas de rádio.</button>
+            <button data-correct="true" style="max-width: 800px; width: 100%; padding: 16px 20px; font-size: 17px; text-align: left; border: 2px solid #ddd; border-radius: 8px; background-color: white; cursor: pointer; min-height: 55px;">Porque a luz não atravessa paredes e não gera interferência eletromagnética (EMI).</button>
+            <button style="max-width: 800px; width: 100%; padding: 16px 20px; font-size: 17px; text-align: left; border: 2px solid #ddd; border-radius: 8px; background-color: white; cursor: pointer; min-height: 55px;">Porque lâmpadas LED são mais baratas que antenas de Wi-Fi.</button>
+            <button style="max-width: 800px; width: 100%; padding: 16px 20px; font-size: 17px; text-align: left; border: 2px solid #ddd; border-radius: 8px; background-color: white; cursor: pointer; min-height: 55px;">Porque a luz permite mais usuários conectados que o Wi-Fi.</button>
+        </div>
+        <div class="quiz-explanation" style="max-width: 800px; margin-top: 20px; padding: 20px; background-color: #e3f2fd; border-left: 4px solid #2196F3; border-radius: 4px;">
+            <p><strong>Resposta Correta: Porque a luz não atravessa paredes e não gera interferência eletromagnética (EMI).</strong></p>
+            <p>A VLC tem duas vantagens cruciais aqui:
+            <ul style="list-style-type: disc; margin-left: 20px;">
+                <li><strong>Segurança:</strong> A luz não atravessa paredes, confinando o sinal à sala e impedindo interceptação externa.</li>
+                <li><strong>Não-Interferência (EMI):</strong> Por ser óptica, não interfere com equipamentos médicos sensíveis ou sistemas de navegação de aeronaves, algo que a RF (Wi-Fi) faz.</li>
+            </ul>
+            </p>
+        </div>
+    </div>
+
+    <div class="quiz-item">
+        <h4 class="quiz-question">3) Qual é a maior limitação física da VLC que o Wi-Fi não tem?</h4>
+        <div class="quiz-options" style="display: flex; flex-direction: column; gap: 12px;">
+            <button data-correct="true" style="max-width: 800px; width: 100%; padding: 16px 20px; font-size: 17px; text-align: left; border: 2px solid #ddd; border-radius: 8px; background-color: white; cursor: pointer; min-height: 55px;">A dependência da Linha de Visada (LOS).</button>
+            <button style="max-width: 800px; width: 100%; padding: 16px 20px; font-size: 17px; text-align: left; border: 2px solid #ddd; border-radius: 8px; background-color: white; cursor: pointer; min-height: 55px;">A baixa potência das lâmpadas LED.</button>
+            <button style="max-width: 800px; width: 100%; padding: 16px 20px; font-size: 17px; text-align: left; border: 2px solid #ddd; border-radius: 8px; background-color: white; cursor: pointer; min-height: 55px;">O custo dos fotodetectores (receptores).</button>
+            <button style="max-width: 800px; width: 100%; padding: 16px 20px; font-size: 17px; text-align: left; border: 2px solid #ddd; border-radius: 8px; background-color: white; cursor: pointer; min-height: 55px;">A interferência da própria luz da lâmpada.</button>
+        </div>
+        <div class="quiz-explanation" style="max-width: 800px; margin-top: 20px; padding: 20px; background-color: #e3f2fd; border-left: 4px solid #2196F3; border-radius: 4px;">
+            <p><strong>Resposta Correta: A dependência da Linha de Visada (LOS).</strong></p>
+            <p>Como a luz não atravessa objetos opacos, a maior limitação da VLC é o "shadowing" (sombreamento). Se sua mão, uma pessoa ou um objeto bloquear o caminho direto entre a lâmpada e o receptor, a conexão pode ser interrompida, algo que não acontece com o Wi-Fi.</p>
+        </div>
+    </div>
+
+    <div class="quiz-item">
+        <h4 class="quiz-question">4) Nos Sistemas de Transporte Inteligentes (ITS), qual é um exemplo prático de comunicação V2V (Veículo-a-Veículo) usando VLC?</h4>
+        <div class="quiz-options" style="display: flex; flex-direction: column; gap: 12px;">
+            <button style="max-width: 800px; width: 100%; padding: 16px 20px; font-size: 17px; text-align: left; border: 2px solid #ddd; border-radius: 8px; background-color: white; cursor: pointer; min-height: 55px;">Pagar o pedágio automaticamente usando a luz do farol.</button>
+            <button style="max-width: 800px; width: 100%; padding: 16px 20px; font-size: 17px; text-align: left; border: 2px solid #ddd; border-radius: 8px; background-color: white; cursor: pointer; min-height: 55px;">Avisar sobre trânsito em um aplicativo de GPS.</button>
+            <button data-correct="true" style="max-width: 800px; width: 100%; padding: 16px 20px; font-size: 17px; text-align: left; border: 2px solid #ddd; border-radius: 8px; background-color: white; cursor: pointer; min-height: 55px;">Um carro alertar instantaneamente o de trás sobre uma frenagem de emergência.</button>
+            <button style="max-width: 800px; width: 100%; padding: 16px 20px; font-size: 17px; text-align: left; border: 2px solid #ddd; border-radius: 8px; background-color: white; cursor: pointer; min-height: 55px;">O carro usar a câmera para ler placas de trânsito.</button>
+        </div>
+        <div class="quiz-explanation" style="max-width: 800px; margin-top: 20px; padding: 20px; background-color: #e3f2fd; border-left: 4px solid #2196F3; border-radius: 4px;">
+            <p><strong>Resposta Correta: Um carro alertar instantaneamente o de trás sobre uma frenagem de emergência.</strong></p>
+            <p>Este é um caso de uso V2V (Veículo-a-Veículo) clássico. A lanterna de LED do carro da frente não apenas acende, mas modula um sinal de alerta que o carro de trás recebe instantaneamente, permitindo uma reação de frenagem automatizada muito antes do motorista humano perceber.</p>
+        </div>
+    </div>
+
+    <div class="quiz-item">
+        <h4 class="quiz-question">5) A comunicação VLC para de funcionar se a luz do ambiente estiver "apagada" ou muito fraca (dimerizada)?</h4>
+        <div class="quiz-options" style="display: flex; flex-direction: column; gap: 12px;">
+            <button style="max-width: 800px; width: 100%; padding: 16px 20px; font-size: 17px; text-align: left; border: 2px solid #ddd; border-radius: 8px; background-color: white; cursor: pointer; min-height: 55px;">Sim, se a luz está apagada, a comunicação é impossível.</button>
+            <button data-correct="true" style="max-width: 800px; width: 100%; padding: 16px 20px; font-size: 17px; text-align: left; border: 2px solid #ddd; border-radius: 8px; background-color: white; cursor: pointer; min-height: 55px;">Não. A comunicação pode continuar mesmo com a luz "apagada".</button>
+            <button style="max-width: 800px; width: 100%; padding: 16px 20px; font-size: 17px; text-align: left; border: 2px solid #ddd; border-radius: 8px; background-color: white; cursor: pointer; min-height: 55px;">Funciona dimerizada, mas para totalmente se estiver "apagada".</button>
+            <button style="max-width: 800px; width: 100%; padding: 16px 20px; font-size: 17px; text-align: left; border: 2px solid #ddd; border-radius: 8px; background-color: white; cursor: pointer; min-height: 55px;">Somente se for usado infravermelho, não luz visível.</button>
+        </div>
+        <div class="quiz-explanation" style="max-width: 800px; margin-top: 20px; padding: 20px; background-color: #e3f2fd; border-left: 4px solid #2196F3; border-radius: 4px;">
+            <p><strong>Resposta Correta: Não. A comunicação pode continuar mesmo com a luz "apagada".</strong></p>
+            <p>Isso é possível porque a lâmpada pode enviar pulsos de luz em altíssima frequência. Esses pulsos são rápidos demais para o olho humano perceber (vemos a luz como "apagada"), mas os fotodiodos (receptores) são rápidos o suficiente para detectar esses pulsos e decodificar os dados.</p>
+        </div>
+    </div>
+</section>
+<section id="bibliografia">
+    <h2>8.0 Bibliografia</h2>
+    <ul style="list-style-type: disc;">
+        <li>Ícones extraídos de: <a href="https://lucide.dev/icons/" target="_blank" rel="noopener noreferrer">https://lucide.dev/</a></li>
+        <li><a href="https://iarjset.com/wp-content/uploads/2019/03/IARJSET.2019.6213.pdf" target="_blank" rel="noopener noreferrer">https://iarjset.com/wp-content/uploads/2019/03/IARJSET.2019.6213.pdf</a></li>
+        <li><a href="https://lifi.co/visible-light-communication/" target="_blank" rel="noopener noreferrer">https://lifi.co/visible-light-communication/</a></li>
+        <li><a href="https://datatracker.ietf.org/doc/html/draft-choi-6lo-owc-01" target="_blank" rel="noopener noreferrer">https://datatracker.ietf.org/doc/html/draft-choi-6lo-owc-01</a></li>
+        <li><a href="https://www.mdpi.com/2304-6732/11/4/293" target="_blank" rel="noopener noreferrer">https://www.mdpi.com/2304-6732/11/4/293</a></li>
+        <li><a href="https://www.oledcomm.net/blog/fundamentals-of-visible-light-communication/" target="_blank" rel="noopener noreferrer">https://www.oledcomm.net/blog/fundamentals-of-visible-light-communication/</a></li>
+        <li><a href="https://ieeexplore.ieee.org/document/8931323" target="_blank" rel="noopener noreferrer">https://ieeexplore.ieee.org/document/8931323</a></li>
+        <li><a href="https://opg.optica.org/oe/fulltext.cfm?uri=oe-27-5-7568" target="_blank" rel="noopener noreferrer">https://opg.optica.org/oe/fulltext.cfm?uri=oe-27-5-7568</a></li>
+        <li><a href="https://bdm.unb.br/bitstream/10483/15149/1/2015_MairaLeiteConceicao.pdf" target="_blank" rel="noopener noreferrer">https://bdm.unb.br/bitstream/10483/15149/1/2015_MairaLeiteConceicao.pdf</a></li>
+        <li><a href="https://opg.optica.org/oe/fulltext.cfm?uri=oe-30-3-4365" target="_blank" rel="noopener noreferrer">https://opg.optica.org/oe/fulltext.cfm?uri=oe-30-3-4365</a></li>
+        <li><a href="https://ieeexplore.ieee.org/document/9970359" target="_blank" rel="noopener noreferrer">https://ieeexplore.ieee.org/document/9970359</a></li>
+        <li><a href="https://www.ppgeet.uff.br/site/wp-content/uploads/2024/06/DissertacaoAmanda_versaoFinal.pdf" target="_blank" rel="noopener noreferrer">https://www.ppgeet.uff.br/site/wp-content/uploads/2024/06/DissertacaoAmanda_versaoFinal.pdf</a></li>
+        <li><a href="https://www2.ufjf.br/pgcc/wp-content/uploads/sites/181/2014/06/luizeduardomendesmatheus.pdf" target="_blank" rel="noopener noreferrer">https://www2.ufjf.br/pgcc/wp-content/uploads/sites/181/2014/06/luizeduardomendesmatheus.pdf</a></li>
+        <li><a href="https://www.mdpi.com/2304-6732/12/3/225" target="_blank" rel="noopener noreferrer">https://www.mdpi.com/2304-6732/12/3/225</a></li>
+        <li><a href="https://www.researchgate.net/publication/332659149_Visible_Light_Communication_Concepts_Applications_and_Challenges" target="_blank" rel="noopener noreferrer">https://www.researchgate.net/publication/332659149_Visible_Light_Communication_Concepts_Applications_and_Challenges</a></li>
+        <li><a href="https://ieeexplore.ieee.org/document/6407443" target="_blank" rel="noopener noreferrer">https://ieeexplore.ieee.org/document/6407443</a></li>
+        <li><a href="https://ieeexplore.ieee.org/document/8783573" target="_blank" rel="noopener noreferrer">https://ieeexplore.ieee.org/document/8783573</a></li>
+        <li><a href="https://www.itskrs.its.dot.gov/sites/default/files/doc/07_SPaT%20Challenge_FINAL%20508%20VERSION_06_23_21.pdf" target="_blank" rel="noopener noreferrer">https://www.itskrs.its.dot.gov/sites/default/files/doc/07_SPaT%20Challenge_FINAL%20508%20VERSION_06_23_21.pdf</a></li>
+        <li><a href="https://www.bu.edu/cise/bytelight/" target="_blank" rel="noopener noreferrer">https://www.bu.edu/cise/bytelight/</a></li>
+        <li><a href="https://ieeexplore.ieee.org/document/10581065" target="_blank" rel="noopener noreferrer">https://ieeexplore.ieee.org/document/10581065</a></li>
+        <li><a href="https://www.purelifi.com/" target="_blank" rel="noopener noreferrer">https://www.purelifi.com/</a></li>
+        <li><a href="https://www.taaraconnect.com" target="_blank" rel="noopener noreferrer">https://www.taaraconnect.com</a></li>
+        <li><a href="https://tecnoblog.net/noticias/rio-ganha-inedita-rede-de-dados-por-feixe-de-luz/" target="_blank" rel="noopener noreferrer">https://tecnoblog.net/noticias/rio-ganha-inedita-rede-de-dados-por-feixe-de-luz/</a></li>
+        <li><a href="https://fiber.google.com/blog/2025/04/from-fiber-to-airwaves-what-taaras.html" target="_blank" rel="noopener noreferrer">https://fiber.google.com/blog/2025/04/from-fiber-to-airwaves-what-taaras.html</a></li>
+    </ul>
+</section>
+
+        </div> 
+    </div>
+    
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const toggleBtn = document.getElementById('toggle-btn');
+        const body = document.body;
+        
+        // =========================================
+        // LÓGICA DO BOTÃO HAMBURGER
+        // =========================================
+        if (toggleBtn) {
+            toggleBtn.addEventListener('click', () => {
+                body.classList.toggle('sidebar-collapsed');
+            });
+        }
+
+        // =========================================
+        // LÓGICA DOS LINKS DO MENU
+        // =========================================
+        const menuLinks = document.querySelectorAll('#sidebar ul li a');
+
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                // Lógica para Mobile (largura <= 768px)
+                if (window.innerWidth <= 768) {
+                    if (!body.classList.contains('sidebar-collapsed')) {
+                        body.classList.add('sidebar-collapsed');
+                    }
+                } 
+                // Lógica para Desktop (largura > 768px)
+                else {
+                    if (body.classList.contains('sidebar-collapsed')) {
+                        body.classList.remove('sidebar-collapsed');
+                    }
+                }
+            });
+        });
+
+        // =========================================
+        // LÓGICA DO QUIZ
+        // =========================================
+        const quizItems = document.querySelectorAll('.quiz-item');
+
+        quizItems.forEach(item => {
+            const options = item.querySelectorAll('.quiz-options button');
+            const explanation = item.querySelector('.quiz-explanation');
+
+            // IMPORTANTE: Garante que a explicação está oculta no início
+            if (explanation) {
+                explanation.style.display = 'none';
+            }
+
+            options.forEach(button => {
+                button.addEventListener('click', () => {
+                    const isCorrect = button.dataset.correct === 'true';
+
+                    // Remove listeners para evitar múltiplos cliques
+                    options.forEach(btn => {
+                        btn.style.pointerEvents = 'none';
+                    });
+
+                    // Percorre todos os botões
+                    options.forEach(btn => {
+                        // Se é a resposta correta, colore de verde suave
+                        if (btn.dataset.correct === 'true') {
+                            btn.style.backgroundColor = '#81C784'; // Verde suave
+                            btn.style.color = 'white';
+                            btn.style.borderColor = '#66BB6A';
+                        }
+                    });
+
+                    // Se o usuário clicou na errada, colore de vermelho suave
+                    if (!isCorrect) {
+                        button.style.backgroundColor = '#E57373'; // Vermelho suave
+                        button.style.color = 'white';
+                        button.style.borderColor = '#EF5350';
+                    }
+
+                    // Mostra a explicação SOMENTE após o clique
+                    if (explanation) {
+                        explanation.style.display = 'block';
+                        
+                        // SCROLL AUTOMÁTICO para a explicação
+                        setTimeout(() => {
+                            explanation.scrollIntoView({ 
+                                behavior: 'smooth', 
+                                block: 'nearest' 
+                            });
+                        }, 100);
+                    }
+                });
+            });
+        });
+
+    });
+</script>
+</body>
+</html>
