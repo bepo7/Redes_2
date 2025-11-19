@@ -76,7 +76,16 @@
                       A ascensão da VLC, portanto, não é um desenvolvimento isolado, mas o resultado de uma confluência perfeita entre um problema crescente (a saturação do espectro de RF) e uma solução emergente 
                       (a dualidade da infraestrutura de iluminação LED). A crise de RF criou a demanda por mais largura de banda, enquanto a revolução LED forneceu a infraestrutura de baixo custo para atender 
                       a essa demanda, transformando uma curiosidade de laboratório em uma tecnologia com imenso potencial prático.</p>
-                <figure class="figura-vlc_4">
+                <figure class="figura-vlc">
+                   <img src="imagens/intro2.png" alt="VLC">
+                   <figcaption>
+                       <span class="figura-desc">Espectro Eletromagnético</span>
+                       <span class="figura-fonte">
+                           Fonte: <a href="https://www.nist.gov/image/electromagnetic-spectrum" target="_blank" rel="noopener noreferrer">The electromagnetic spectrum </a>
+                       </span>
+                   </figcaption>
+               </figure>
+                <figure class="figura-vlc">
                    <img src="imagens/intro1.jpg" alt="VLC">
                    <figcaption>
                        <span class="figura-desc">Exemplo de VLC</span>
@@ -85,15 +94,6 @@
                        </span>
                    </figcaption>
                </figure> 
-                <figure class="figura-vlc">
-                   <img src="imagens/intro2.png" alt="VLC">
-                   <figcaption>
-                       <span class="figura-desc">Espectro eletromagnético</span>
-                       <span class="figura-fonte">
-                           Fonte: <a href="https://www.nist.gov/image/electromagnetic-spectrum" target="_blank" rel="noopener noreferrer">The electromagnetic spectrum </a>
-                       </span>
-                   </figcaption>
-               </figure>
                     </section>
             
 
@@ -126,15 +126,23 @@
                 <p>O receptor tem a função de captar o sinal óptico modulado e convertê-lo de volta em um sinal elétrico para que os dados possam ser decodificados.</p>
                 <p><b>Fotodiodos (PD):</b> São a escolha padrão para capturar sinais VLC, sendo normalmente utilizados em configurações de receptores fixos e estacionários. O receptor com fotodiodo geralmente possui um concentrador óptico para amplificar o sinal de luz fraco e um filtro óptico para eliminar ruídos de fontes como a luz solar. A função do fotodiodo é detectar o sinal luminoso e convertê-lo em uma fotocorrente.</p>
                 <p><b>Sensores de Imagem (IS):</b> São preferidos para cenários móveis com campos de visão (FOV) mais amplos, sendo implementados em smartphones para aplicações como posicionamento interno. Sua função é detectar e converter sinais de luz em dados eletrônicos. Os sensores do tipo CMOS são os mais comuns em celulares por vantagens como menor consumo de energia e tamanho reduzido. No entanto, são considerados lentos e consomem muita energia, exigindo um compromisso entre custo, velocidade e complexidade na sua escolha.</p>
-                
+                <figure class="figura-vlc">
+                   <img src="imagens/MVVVV.png" alt="O que é Comunicação por Luz Visível (VLC)">
+                   <figcaption>
+                       <span class="figura-desc">Componentes Fundamentais de um Sistema VLC</span>
+                       <span class="figura-fonte">
+                           Fonte: <a href="https://link.springer.com/rwe/10.1007/978-981-33-4999-5_63-1" target="_blank" rel="noopener noreferrer">Visible Light Communication (VLC) Basics </a>
+                       </span>
+                   </figcaption>
+               </figure>
                 <h3>2.2 A Comunicação de Luz Visível: Arquitetura em Camadas</h3>
                 <p>A arquitetura de sistemas de Comunicação por Luz Visível (VLC) é geralmente descrita usando uma pilha de protocolos em camadas. Este modelo de camadas é uma abstração essencial que nos permite simplificar a complexidade do sistema. Em vez de tratar a comunicação como um único processo, nós o dividimos em níveis distintos, onde cada camada resolve um conjunto específico de problemas. Para entender o fluxo da comunicação, seguimos essa abstração. O processo se inicia quando os dados (bits) precisam ser enviados. Eles são processados na Camada Física (PHY) do transmissor, que é responsável por tarefas como a codificação e a modulação. A modulação é o processo que define como os dados são convertidos em um sinal que controlará o acionamento do LED. Do outro lado, o receptor (como um fotodiodo) captura a luz emitida. O sinal elétrico gerado é então amplificado e passa pela demodulação — um processo que também pertence à Camada Física (PHY) — para recuperar os bits originais. No entanto, em um ambiente com múltiplos dispositivos, apenas a camada física não é suficiente. Precisamos gerenciar quem pode usar o canal de luz e quando. Essa é a função da Camada MAC (Media Access Control). Ela utiliza protocolos, como o CSMA, para controlar o acesso ao meio, gerenciar a associação de dispositivos e evitar colisões. Os tópicos a seguir aprofundarão exatamente essas duas camadas, detalhando os mecanismos da Camada Física e os protocolos da Camada MAC que, juntas, tornam a comunicação VLC funcional.</p>
-                <figure class="figura-vlc">
-                   <img src="imagens/Estrutura_do_sistema.png" alt="O que é Comunicação por Luz Visível (VLC)">
+                                <figure class="figura-vlc">
+                   <img src="imagens/MV_4.png" alt="VLC">
                    <figcaption>
-                       <span class="figura-desc">Componentes fundamentais de um sistema VLC</span>
+                       <span class="figura-desc">Arquitetura da Comunicação por Luz Visível</span>
                        <span class="figura-fonte">
-                           Fonte: <a href="https://www.utmel.com/blog/categories/optoelectronics/what-is-visible-light-communication-vlc" target="_blank" rel="noopener noreferrer">What is Visible Light Communication(VLC)? </a>
+                           Fonte: <a href="https://www.researchgate.net/publication/332659149_Visible_Light_Communication_Concepts_Applications_and_Challenges" target="_blank" rel="noopener noreferrer">Visible Light Communication: Concepts, Applications and Challenges</a>
                        </span>
                    </figcaption>
                </figure>
@@ -165,11 +173,11 @@
                     <li><b>Propagação:</b> Em ambientes internos, é importante compreender o impacto da luz refletida por múltiplas superfícies no desempenho do sistema.</li>
                 </ul>
                 <figure class="figura-vlc">
-                   <img src="imagens/MV_4.png" alt="VLC">
+                   <img src="imagens/Estrutura_do_sistema.png" alt="O que é Comunicação por Luz Visível (VLC)">
                    <figcaption>
-                       <span class="figura-desc">Arquitetura da Comunicação por Luz Visível</span>
+                       <span class="figura-desc">Processos da Camada Física</span>
                        <span class="figura-fonte">
-                           Fonte: <a href="https://www.researchgate.net/publication/332659149_Visible_Light_Communication_Concepts_Applications_and_Challenges" target="_blank" rel="noopener noreferrer">Visible Light Communication: Concepts, Applications and Challenges</a>
+                           Fonte: <a href="https://www.utmel.com/blog/categories/optoelectronics/what-is-visible-light-communication-vlc" target="_blank" rel="noopener noreferrer">What is Visible Light Communication(VLC)? </a>
                        </span>
                    </figcaption>
                </figure>
@@ -264,7 +272,7 @@
                     <figure class="figura-vlc">
                         <img src="imagens/MV_7.png" alt="VLC">
                         <figcaption>
-                            <span class="figura-desc">Topologias de rede</span>
+                            <span class="figura-desc">Topologias de Rede</span>
                             <span class="figura-fonte">
                                 Fonte: <a href="https://www.mdpi.com/2304-6732/11/4/293" target="_blank" rel="noopener noreferrer">Mobile Application for Visible Light Communication Systems: An Approach for Indoor Positioning</a>
                             </span>
@@ -277,7 +285,7 @@
                     <figure class="figura-vlc">
                         <img src="imagens/tdma.png" alt="VLC">
                         <figcaption>
-                            <span class="figura-desc">Funcionamneto do TDMA</span>
+                            <span class="figura-desc">Funcionamento do TDMA</span>
                             <span class="figura-fonte">
                                 Fonte: <a href="https://www.cbtnuggets.com/blog/technology/networking/what-is-code-division-multiple-access-cdma" target="_blank" rel="noopener noreferrer">What is CDMA (Code-Division Multiple Access)?</a>
                             </span>
@@ -288,7 +296,7 @@
                     <figure class="figura-vlc">
                         <img src="imagens/sdma.png" alt="VLC">
                         <figcaption>
-                            <span class="figura-desc">Funcionamneto do SDMA</span>
+                            <span class="figura-desc">Funcionamento do SDMA</span>
                             <span class="figura-fonte">
                                 Fonte: <a href="https://www.researchgate.net/figure/Space-Division-Multiple-Access_fig11_264974179" target="_blank" rel="noopener noreferrer">Space Division Multiple Access</a>
                             </span>
@@ -303,7 +311,7 @@
                     <figure class="figura-vlc">
                         <img src="imagens/fdma.png" alt="VLC">
                         <figcaption>
-                            <span class="figura-desc">Funcionamneto do FDMA</span>
+                            <span class="figura-desc">Funcionamento do FDMA</span>
                             <span class="figura-fonte">
                                 Fonte: <a href="https://www.cbtnuggets.com/blog/technology/networking/what-is-code-division-multiple-access-cdma" target="_blank" rel="noopener noreferrer">What is CDMA (Code-Division Multiple Access)?</a>
                             </span>
@@ -314,7 +322,7 @@
                     <figure class="figura-vlc">
                         <img src="imagens/cdma.png" alt="VLC">
                         <figcaption>
-                            <span class="figura-desc">Funcionamneto do CDMA</span>
+                            <span class="figura-desc">Funcionamento do CDMA</span>
                             <span class="figura-fonte">
                                 Fonte: <a href="https://electronicsdesk.com/code-division-multiple-access.html" target="_blank" rel="noopener noreferrer">Code Division Multiple Access (CDMA)</a>
                             </span>
@@ -325,7 +333,7 @@
                     <figure class="figura-vlc">
                         <img src="imagens/noma.png" alt="VLC">
                         <figcaption>
-                            <span class="figura-desc">Funcionamneto do NOMA</span>
+                            <span class="figura-desc">Funcionamento do NOMA</span>
                             <span class="figura-fonte">
                                 Fonte: <a href=" https://www.mdpi.com/1424-8220/17/11/2465" target="_blank" rel="noopener noreferrer">Power Allocation Scheme for Non-Orthogonal Multiple Access in Underwater Acoustic Communications</a>
                             </span>
@@ -349,7 +357,7 @@
                     
                     <figcaption>
                         <span class="figura-desc">
-                            Tabela comparativa de tecnologias de radiofrequência e VLC
+                            Tabela Comparativa de Tecnologias de Radiofrequência e VLC
                         </span>
                         
                         <span class="figura-fonte">
@@ -427,7 +435,7 @@
                     </video>
                     
                     <figcaption>
-                        <span class="figura-desc">Comparação de roteamento Wi-Fi x Li-Fi</span>
+                        <span class="figura-desc">Comparação de Roteamento Wi-Fi x Li-Fi</span>
                         <span class="figura-fonte">Fonte: 
                             <a href="https://www.purelifi.com/about-lifi/" target="_blank">pureLiFi - What is LiFi & How Does it Work?</a>
                         </span>
@@ -455,7 +463,7 @@
                     <img src="imagens/Li-Fi.jpg" alt="Infográfico sobre Li-Fi">
                     
                     <figcaption>
-                        <span class="figura-desc">Exemplo de aplicação Li-Fi em um ambiente interno</span>
+                        <span class="figura-desc">Exemplo de Aplicação Li-Fi em um Ambiente Interno</span>
                         
                         <span class="figura-fonte">
                             Fonte: <a href="https://canalbpv.com/li-fi-promete-ser-mais-rapido-que-wi-fi-e-5g-entenda-sobre-essa-tecnologia/" target="_blank" rel="noopener noreferrer">Li-Fi Promete ser Mais Rápido que Wi-Fi e 5G; Entenda sobre essa Tecnologia!</a>
@@ -542,7 +550,7 @@
                         <img src="imagens/how-taara-works.gif" alt="Feixe de luz entre dois terminais Lightbridge da Taara">
                         
                         <figcaption>
-                            <span class="figura-desc">Feixe de luz entre dois terminais "Lightbridge"</span>
+                            <span class="figura-desc">Feixe de Luz entre Dois Terminais "Lightbridge"</span>
                             <span class="figura-fonte">Fonte: 
                                 <a href="https://tecnoblog.net/noticias/rio-ganha-inedita-rede-de-dados-por-feixe-de-luz/" target="_blank">Rio ganha inédita rede de dados por feixe de luz</a>
                             </span>
@@ -564,7 +572,7 @@
                 <figure class="figura-vlc_3">
                     <img src="imagens/Li-Fi_func.png" alt="Tecnologia Li-Fi com luz visível">
                     <figcaption>
-                        <span class="figura-desc">Funcionamento da tecnologia Li-Fi</span>
+                        <span class="figura-desc">Funcionamento da Tecnologia Li-Fi</span>
                         <span class="figura-fonte">
                             Fonte: <a href="https://krify.co/li-fi-technology-beating-wi-fi-speed-with-visible-light/" target="_blank" rel="noopener noreferrer">Li-Fi Technology: Beating Wi-Fi Speed with visible light</a>
                         </span>
@@ -598,7 +606,7 @@
                 <figure class="figura-vlc_3">
                     <img src="imagens/Veiculo1.jpg" alt="Metodologias de VLC Veicular">
                     <figcaption>
-                        <span class="figura-desc">Comunicação veicular com VLC</span>
+                        <span class="figura-desc">Comunicação Veicular com VLC</span>
                         <span class="figura-fonte">
                             Fonte: <a href="https://www.mdpi.com/1424-8220/24/2/598" target="_blank" rel="noopener noreferrer">A Survey of Vehicular VLC Methodologies</a>
                         </span>
@@ -646,7 +654,7 @@
                 <figure class="figura-vlc_3">
                     <img src="imagens/IPS.png" alt="Sistema de localização interna com VLC">
                     <figcaption>
-                        <span class="figura-desc">Sistema de localização interna (IPS) com VLC</span>
+                        <span class="figura-desc">Sistema de Localização Interna (IPS) com VLC</span>
                         <span class="figura-fonte">
                             Fonte: <a href="https://www.researchgate.net/figure/LC-indoor-localization-system_fig1_332959345" target="_blank" rel="noopener noreferrer">VLC indoor localization system</a>
                         </span>
@@ -664,7 +672,7 @@
                 <figure class="figura-vlc_2">
                     <img src="imagens/Subaq.png" alt="Rede de sensores subaquática com VLC">
                     <figcaption>
-                        <span class="figura-desc">Comunicação subaquática com VLC</span>
+                        <span class="figura-desc">Comunicação Subaquática com VLC</span>
                         <span class="figura-fonte">
                             Fonte: <a href="https://www.researchgate.net/figure/An-example-of-underwater-sensor-networks-implemented-with-the-VLC-technology_fig1_338742070" target="_blank" rel="noopener noreferrer">An example of underwater sensor networks implemented with the VLC technology </a>
                         </span>
@@ -675,7 +683,7 @@
                     
                     <figcaption>
                         <span class="figura-desc">
-                            Tabela comparativa dos meios de comunicação subaquáticos
+                            Tabela Comparativa dos Meios de Comunicação Subaquáticos
                         </span>
                         
                         <span class="figura-fonte">
@@ -696,7 +704,7 @@
                 <figure class="figura-vlc">
                     <img src="imagens/Espectro_luz.svg" alt="Diagrama do Espectro Visível">
                     <figcaption>
-                        <span class="figura-desc">Espectro eletromagnético e parte visível</span>
+                        <span class="figura-desc">Espectro Eletromagnético e Parte Visível</span>
                         
                         <span class="figura-fonte">
                             Fonte: <a href="https://pt.wikipedia.org/wiki/Espectro_vis%C3%ADvel" target="_blank" rel="noopener noreferrer">Espectro visível (Wikipedia)</a>
@@ -713,7 +721,7 @@
                     </video>
                     
                     <figcaption>
-                        <span class="figura-desc">Comparação de segurança Wi-Fi x Li-Fi</span>
+                        <span class="figura-desc">Comparação de Segurança Wi-Fi x Li-Fi</span>
                         <span class="figura-fonte">Fonte: 
                             <a href="https://www.purelifi.com/about-lifi/" target="_blank">pureLiFi - What is LiFi & How Does it Work?</a>
                         </span>
@@ -840,7 +848,7 @@
             <figure class="figura-vlc_2">
                     <img src="imagens/escuro.webp" alt="Ambiente de baixa luminosidade na VLC">
                     <figcaption>
-                        <span class="figura-desc">Ambiente de baixa luminosidade na VLC</span>
+                        <span class="figura-desc">Ambiente de Baixa Luminosidade na VLC</span>
 
                         <span class="figura-fonte">
                             Fonte: <a href="https://www.oledcomm.net/blog/fundamentals-of-visible-light-communication" target="_blank" rel="noopener noreferrer">Fundamentals of Visible Light Communication Technology(Oledcomm)</a>
